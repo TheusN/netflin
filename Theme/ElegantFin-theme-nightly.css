@@ -4,16 +4,16 @@
 /* @import url(./assets/add-ons/extras-media-bar-nightly.css); */
 /* @import url("https://cdn.jsdelivr.net/gh/lscambo13/ElegantFin@main/Theme/assets/add-ons/custom-media-covers-latest-min.css"); */
 
-/* Inter Font Family */
-@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+/* Poppins Font Family */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 :root {
-    --elegantFinFooterText: "ElegantFin Nightly";
+    --elegantFinFooterText: "ElegantFin v25.10.28";
 
     /* Base theme colors */
     color-scheme: dark;
-    --darkerGradientPoint: #111827;
-    --darkerGradientPointAlpha: rgba(17, 24, 39, .85);
+    --darkerGradientPoint: #000000;
+    --darkerGradientPointAlpha: rgba(0, 0, 0, .85);
     --lighterGradientPoint: #1d2635;
     --lighterGradientPointAlpha: rgba(29, 38, 53, .85);
     --headerColor: rgba(30, 40, 54, .8);
@@ -131,7 +131,7 @@
 }
 
 html {
-    font-family: "Inter", serif;
+    font-family: "Poppins", serif;
     font-optical-sizing: auto;
     font-weight: 425;
     font-style: normal;
@@ -1447,11 +1447,11 @@ html,
 
 .backgroundContainer.withBackdrop {
     opacity: .9;
-    background: linear-gradient(0deg, var(--darkerGradientPoint), 45%, rgba(17, 24, 39, .25));
+    background: linear-gradient(0deg, var(--darkerGradientPoint), 45%, rgba(0, 0, 0, .25));
 }
 
 .layout-tv .backgroundContainer.withBackdrop {
-    background: linear-gradient(0deg, var(--darkerGradientPoint), 45%, rgba(17, 24, 39, .95));
+    background: linear-gradient(0deg, var(--darkerGradientPoint), 45%, rgba(0, 0, 0, .95));
 }
 
 .layout-mobile .withSectionTabs .backgroundContainer.withBackdrop {

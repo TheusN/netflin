@@ -4,16 +4,16 @@
 /* @import url(./assets/add-ons/extras-media-bar-nightly.css); */
 /* @import url("https://cdn.jsdelivr.net/gh/lscambo13/ElegantFin@main/Theme/assets/add-ons/custom-media-covers-latest-min.css"); */
 
-/* Inter Font Family */
-@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+/* Poppins Font Family */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 :root {
-    --elegantFinFooterText: "ElegantFin v25.08.08";
+    --elegantFinFooterText: "ElegantFin v25.10.28";
 
     /* Base theme colors */
     color-scheme: dark;
-    --darkerGradientPoint: #111827;
-    --darkerGradientPointAlpha: rgba(17, 24, 39, .85);
+    --darkerGradientPoint: #000000;
+    --darkerGradientPointAlpha: rgba(0, 0, 0, .85);
     --lighterGradientPoint: #1d2635;
     --lighterGradientPointAlpha: rgba(29, 38, 53, .85);
     --headerColor: rgba(30, 40, 54, .8);
@@ -55,7 +55,7 @@
     --backgroundGradient: linear-gradient(0deg, var(--darkerGradientPoint) 35%, var(--lighterGradientPoint));
     --cardBackgroundGradient: linear-gradient(0deg, var(--darkerGradientPoint), 25%, var(--lighterGradientPoint));
     --headerColorGradient: linear-gradient(180deg, rgba(30, 40, 54, .95) 30%, 55%, transparent 90%);
-    --headerColorGradientAlt: linear-gradient(180deg, rgba(30, 40, 54, .95), 70%, transparent);
+    --headerColorGradientAlt: linear-gradient(180deg, rgba(30, 40, 54, 1), 70%, transparent);
     --headerBlurMask: linear-gradient(180deg, white 50%, 85%, transparent);
 
     --cardFooterGradient: linear-gradient(0deg, rgb(0 0 0 / 90%), 40%, transparent);
@@ -78,7 +78,7 @@
 
     --sidePadding: 3.3%;
     --itemColumnGap: 1em;
-    --primaryItemPageNegativeSpace: 15vh;
+    --primaryItemPageNegativeSpace: 12vh;
     --secondaryItemPageNegativeSpace: 35vh;
 
     --blurSmallest: blur(2px);
@@ -120,10 +120,18 @@
     /* use "" to enable the card hover effect [default]; 
        use none (without quotes) to disable it */
     --cardHoverEffect: "";
+
+    /* use 5em to enable the fading app bar (seamless); 
+       use 4.6em to get the solid app bar (cleaner with border) */
+    --appBarHeight: 5em;
+
+    /* use 50% to crop the top of the backdrop image slightly (recommended) [default]; 
+       use 0% to prevent the cropping from top, or choose between 0% and 100% according to your preference */
+    --backdropPositionY: 50%;
 }
 
 html {
-    font-family: "Inter", serif;
+    font-family: "Poppins", serif;
     font-optical-sizing: auto;
     font-weight: 425;
     font-style: normal;
@@ -132,7 +140,9 @@ html {
 
 .layout-mobile {
     --itemColumnGap: 0;
-    --sidePadding: 5%;
+    --headerColorGradient: var(--headerColorGradientAlt);
+    --blurLargest: blur(12px);
+    --headerBlurMask: linear-gradient(180deg, white 60%, 90%, transparent);
 }
 
 /* Material Icons Round */
@@ -178,10 +188,15 @@ html {
     transition: transform 50ms;
 }
 
+#myPreferencesMenuPage>div:after,
 .dashboardFooter::after {
     content: var(--elegantFinFooterText);
     font-size: .8em;
-    color: #4e4e60;
+    color: var(--borderColor);
+    display: inline-grid;
+    width: -webkit-fill-available;
+    justify-content: center;
+    font-weight: 600;
 }
 
 ::selection {
@@ -192,11 +207,11 @@ html {
     color: var(--borderColor);
 }
 
-.card {
-    padding: .375em;
-    transition: width .5s;
+.cardPadder .cardImageIcon {
+    color: var(--selectorBackgroundColorAlpha);
 }
 
+.card:focus .cardBox.visualCardBox,
 .card:focus .cardBox:not(.visualCardBox) .cardScalable {
     border-color: white !important;
 }
@@ -217,11 +232,6 @@ html {
 
 .emby-tabs .emby-button.show-focus:focus {
     outline: none !important;
-}
-
-.card.show-animation:focus>.cardBox {
-    -webkit-transform: scale(1.125);
-    transform: scale(1.125);
 }
 
 [dir=ltr] .itemsContainer>.card>.cardBox {
@@ -315,34 +325,34 @@ html {
     color: var(--borderColor);
 }
 
-.card.card-hoverable:hover .cardScalable,
-.card.card-hoverable:hover .visualCardBox {
+.card-hoverable:hover .cardScalable,
+.card-hoverable:hover .visualCardBox {
     border-color: white !important;
 }
 
-.card.card-hoverable:hover .visualCardBox .cardScalable {
+.card-hoverable:hover .visualCardBox .cardScalable {
     border-color: var(--darkerBorderColor) !important;
 }
 
-.card.card-hoverable:hover .cardImageContainer {
+.card-hoverable:hover .cardImageContainer {
     transform: scale(1.025);
 }
 
-.card.card-hoverable .itemSelectionPanel {
+.card-hoverable .itemSelectionPanel {
     transition: transform .125s;
 }
 
-.card.card-hoverable:hover .cardScalable,
-.card.card-hoverable:hover .itemSelectionPanel {
+.card-hoverable:hover .cardScalable,
+.card-hoverable:hover .itemSelectionPanel {
     transform: scale(1.02);
 }
 
-.card.card-hoverable .cardScalable:active {
+.card-hoverable .cardScalable:active {
     transition: transform .075s;
     transform: scale(1);
 }
 
-.cardScalable:has(.cardOverlayButton:hover)>.cardImageContainer {
+.cardScalable:has(.cardOverlayButton-hover:hover)>.cardImageContainer {
     transform: scale(1);
 }
 
@@ -351,7 +361,7 @@ html {
     background: rgba(255, 255, 255, .05);
 }
 
-.card.card-hoverable .cardOverlayContainer:after {
+.card-hoverable .cardOverlayContainer:after {
     content: var(--cardHoverEffect);
     transition: .5s;
     position: absolute;
@@ -363,7 +373,7 @@ html {
     background: var(--hoverGradientV);
 }
 
-.card.card-hoverable:hover .cardOverlayContainer:after {
+.card-hoverable:hover .cardOverlayContainer:after {
     transform: translateY(50%) translateX(0);
     opacity: 0;
 }
@@ -410,7 +420,7 @@ html {
     color: white;
 }
 
-.layout-desktop .cardOverlayButton-br button[data-action="menu"],
+.cardOverlayButton-br .cardOverlayButton-hover[data-action="menu"],
 .layout-desktop .listItemButton[data-action="menu"] {
     display: none;
 }
@@ -701,6 +711,13 @@ html {
         --cardCount: 7;
     }
 
+    .layout-tv .portraitCard,
+    .layout-tv .squareCard,
+    .layout-tv .overflowPortraitCard,
+    .layout-tv .overflowSquareCard {
+        --cardCount: 6;
+    }
+
     .squareCard:has(.cardFooter) {
         --cardCount: 6;
     }
@@ -711,6 +728,11 @@ html {
 
     .overflowBackdropCard {
         --cardCount: 5;
+    }
+
+    .layout-tv .backdropCard,
+    .layout-tv .overflowBackdropCard {
+        --cardCount: 4;
     }
 }
 
@@ -821,11 +843,24 @@ html {
     }
 }
 
+.layout-mobile .card {
+    --sidePadding: 5%;
+}
+
 .card {
     --effectiveWidth: calc((99vw - (var(--sidePadding) * 2)));
     --cardWidth: calc(var(--effectiveWidth) / var(--cardCount) - var(--itemColumnGap));
-    box-sizing: border-box;
     width: var(--cardWidth) !important;
+    padding: .375em;
+    transition: width .5s;
+    box-sizing: content-box;
+}
+
+/* this makes the cards bigger and center aligned on older browsers */
+@supports (aspect-ratio: 1 / 1) {
+    .card {
+        box-sizing: border-box;
+    }
 }
 
 .layout-mobile .card {
@@ -864,17 +899,22 @@ html {
     flex-direction: column;
     /* center content on desktop */
     align-items: center;
-    text-align: center;
-    margin-bottom: -1.5em;
+    /* this aligns the plot to left on 10.11.0 */
+    text-align: left;
+    /* temporarily disabled for 10.11.0 */
+    /* margin-bottom: -1.5em; */
 }
 
-.layout-mobile .detailPagePrimaryContainer {
-    padding: .5em var(--sidePadding);
+/* this disables block padding on pre-10.11.0 */
+.layout-mobile .detailPagePrimaryContainer.detailRibbon,
+/* this disables block padding on 10.11.0 */
+.layout-mobile .detailPagePrimaryContainer>.detailRibbon {
+    padding: 0 var(--sidePadding);
 }
 
-[dir=ltr] .detailPagePrimaryContent {
+/* [dir=ltr] .detailPagePrimaryContent {
     padding-right: 0;
-}
+} */
 
 .layout-desktop .detailPagePrimaryContainer {
     background: transparent;
@@ -884,8 +924,32 @@ html {
     background-color: transparent;
 }
 
-.detailPageSecondaryContainer {
+/* this removes the extra large left paading on 10.11.0 */
+.detailPagePrimaryContainer>.detailPagePrimaryContent,
+[dir=ltr] .detailPagePrimaryContainer>.detailRibbon,
+/* this removes the extra large left paading on pre-10.11.0 */
+[dir=ltr] .detailPagePrimaryContainer.detailRibbon {
+    padding-left: var(--sidePadding);
+}
+
+.layout-mobile .detailPagePrimaryContent {
+    padding-left: var(--sidePadding) !important;
+    padding-right: var(--sidePadding) !important;
+}
+
+/* this places main media buttons below the title on 10.11.0 */
+.layout-desktop [dir=ltr] .detailRibbon,
+.layout-tv [dir=ltr] .detailRibbon {
+    flex-direction: column;
+}
+
+.detailPagePrimaryContainer>.detailPagePrimaryContent {
     padding-top: 0;
+}
+
+.detailPageSecondaryContainer {
+    /* use !important for pre-10.11.0 compatibility */
+    padding-top: 0 !important;
 }
 
 /* this hides the header home button everywhere except the main media page */
@@ -915,6 +979,7 @@ html {
 
 .verticalSection.emby-scroller-container>h2.sectionTitle.sectionTitle-cards {
     padding-top: 1.25em !important;
+    margin: 0 0 -.5em 0;
 }
 
 #itemDetailPage .emby-scroller-container,
@@ -922,6 +987,7 @@ html {
 #itemDetailPage .scrollX {
     margin: 0 calc(-1 * var(--sidePadding));
     padding: 0 var(--sidePadding);
+    padding-left: calc(var(--sidePadding) - .375em);
 }
 
 .layout-desktop .emby-scroller-container,
@@ -930,7 +996,12 @@ html {
     --itemColumnGap: 0.5em;
 }
 
-.itemsContainer {
+.emby-scroller,
+.hiddenScrollX.scrollX {
+    padding-left: calc(var(--sidePadding) - .375em);
+}
+
+.itemsContainer:not(.editorsChoiceItemsContainer) {
     column-gap: var(--itemColumnGap);
 }
 
@@ -941,14 +1012,16 @@ html {
 
 .sectionTitleContainer-cards {
     padding-top: 0;
-}
-
-.sectionTitleContainer+.emby-scrollbuttons {
-    padding-top: 0;
+    margin: .75em 0 -.75em 0;
 }
 
 .layout-mobile :not(.sectionTitleContainer-cards)>.sectionTitle-cards {
     text-align: left;
+    margin: .75em 0 -.75em 0;
+}
+
+.sectionTitleContainer+.emby-scrollbuttons {
+    padding-top: 0;
 }
 
 .emby-scrollbuttons-button.paper-icon-button-light>.material-icons {
@@ -999,14 +1072,15 @@ html {
 }
 
 .layout-desktop .detailRibbon {
-    height: 32vh !important;
-    margin-top: unset !important;
+    height: 28vh;
+    margin-top: unset;
 }
 
-.layout-desktop [dir=ltr] .detailPagePrimaryContainer,
+/* test disabled for 10.11.0 */
+/* .layout-desktop [dir=ltr] .detailPagePrimaryContainer,
 .layout-tv [dir=ltr] .detailPagePrimaryContainer {
     padding-left: var(--sidePadding);
-}
+} */
 
 @keyframes animMoveDown {
     from {
@@ -1045,27 +1119,14 @@ html {
 }
 
 .detailLogo {
-    /* this hides the detail logo by default to make it only show up on modern browsers */
-    display: none;
-}
-
-@supports (aspect-ratio: 1 / 1) {
-    /* this shows the detail logo on modern browsers */
-
-    .detailLogo {
-        display: block;
-        top: calc(100vh - 10em - var(--primaryItemPageNegativeSpace));
-        left: 0;
-        width: 40%;
-        transform: translateY(-100%);
-        margin: auto 30%;
-        height: 25vh;
-        background-position: bottom;
-    }
-
-    .layout-tv .detailLogo {
-        display: block;
-    }
+    display: block;
+    top: calc(100vh - 11em - var(--primaryItemPageNegativeSpace));
+    left: 0;
+    width: 40%;
+    transform: translateY(-100%);
+    margin: auto 30%;
+    height: 25vh;
+    background-position: bottom;
 }
 
 .layout-mobile .detailLogo {
@@ -1121,6 +1182,7 @@ html {
 }
 
 .layout-tv .detailLogo {
+    display: block;
     height: 20vh;
     top: 39vh;
     left: 30vw;
@@ -1132,25 +1194,37 @@ html {
     height: 33vh;
 }
 
-.detailImageContainer.padded-left {
+/* .detailImageContainer.padded-left {
     padding-left: 0;
-}
+} */
 
-.layout-tv .detailImageContainer.padded-left {
-    padding-left: 0;
-    height: 0;
+/* .layout-tv .detailImageContainer .card {
+    padding-left: var(--sidePadding);
+
     position: fixed;
-}
+} */
 
 .layout-desktop .detailImageContainer .card {
-    top: unset !important;
+    position: absolute !important;
     width: 22vh !important;
+    float: none;
+    left: 0 !important;
+    top: 0;
+    right: 0;
+    margin: auto;
+    margin-bottom: 0;
+    place-self: center;
+    transform: translateY(-80%);
+}
+
+.layout-desktop .detailImageContainer .backdropCard,
+.layout-desktop .detailImageContainer .squareCard {
+    transform: translateY(-100%);
 }
 
 .detailImageContainer .card.backdropCard {
     width: 40vh !important;
     max-width: 50vw;
-    margin-bottom: 1em;
 }
 
 .detailImageContainer .card {
@@ -1158,8 +1232,15 @@ html {
 }
 
 .layout-tv .detailImageContainer .card {
-    width: 23vw !important;
-    display: block !important;
+    width: 25vw !important;
+    display: grid !important;
+    position: fixed !important;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    left: var(--sidePadding);
+    align-content: center;
+    transform: none;
 }
 
 .layout-mobile .detailImageContainer .card {
@@ -1177,6 +1258,8 @@ html {
     align-content: end;
     place-items: center;
     display: grid;
+    /* this centers the title and other text on 10.11.0 */
+    text-align: center;
 }
 
 /* Both the blocks below position the poster in main media page in the center */
@@ -1240,6 +1323,7 @@ html {
 /* this shows the poster in the cast, book and music pages */
 .detailImageContainer .card:has(.book, .person, .album),
 .detailImageContainer .card.backdropCard:has(.tv),
+.detailImageContainer .card.backdropCard:has(.movie),
 .detailImageContainer .card.backdropCard:has(.live_tv) {
     display: block;
 }
@@ -1330,6 +1414,10 @@ html,
     background: var(--backgroundGradient);
 }
 
+.backdropImage {
+    background-position-y: var(--backdropPositionY);
+}
+
 .backdropImage:after,
 .backdropImage:before {
     content: "";
@@ -1359,7 +1447,11 @@ html,
 
 .backgroundContainer.withBackdrop {
     opacity: .9;
-    background: linear-gradient(0deg, var(--darkerGradientPoint), 45%, rgba(17, 24, 39, .25));
+    background: linear-gradient(0deg, var(--darkerGradientPoint), 45%, rgba(0, 0, 0, .25));
+}
+
+.layout-tv .backgroundContainer.withBackdrop {
+    background: linear-gradient(0deg, var(--darkerGradientPoint), 45%, rgba(0, 0, 0, .95));
 }
 
 .layout-mobile .withSectionTabs .backgroundContainer.withBackdrop {
@@ -1654,26 +1746,10 @@ progress+span {
     outline: none;
     overflow: hidden;
     margin-top: 1em;
-    border: var(--defaultBorder);
     border-radius: var(--smallRadius);
     background-color: var(--lighterGradientPointAlpha);
-}
-
-@supports(display:revert) {
-    .itemDetailsGroup {
-        outline: var(--defaultBorder);
-        outline-offset: calc(-1 * var(--borderWidth));
-        border: none;
-    }
-
-    /* this somehow fixes border overflow on mobile */
-    .layout-mobile .itemDetailsGroup {
-        outline-offset: calc(-1 * var(--borderWidthDouble));
-    }
-}
-
-.itemDetailsGroup>div:not(:last-child) {
-    border-bottom: var(--defaultBorder);
+    border: none;
+    box-shadow: inset 0 0 0 .06em var(--borderColor) !important;
 }
 
 .detailsGroupItem {
@@ -1681,6 +1757,10 @@ progress+span {
     justify-content: space-between;
     padding: .5em .9em;
     align-items: baseline;
+}
+
+.detailsGroupItem:not(:last-child) {
+    border-bottom: var(--defaultBorder);
 }
 
 .detailsGroupItem>.label {
@@ -1776,7 +1856,6 @@ progress+span {
     color: var(--dimTextColor);
     margin-top: 0;
     margin-bottom: 0;
-    -webkit-line-clamp: 2;
 }
 
 .detail-clamp-text p {
@@ -1784,8 +1863,17 @@ progress+span {
     margin-bottom: .25em;
 }
 
+.layout-desktop .detail-clamp-text {
+    -webkit-line-clamp: 2;
+}
+
 .layout-mobile .detail-clamp-text {
     -webkit-line-clamp: 4;
+}
+
+.layout-tv .detail-clamp-text {
+    -webkit-line-clamp: 10;
+    transition: none;
 }
 
 .overview-expand.emby-button {
@@ -1889,10 +1977,10 @@ progress+span {
         border: unset;
     }
 
-    body:has(.dialog.dialog-fixedSize.opened,
+    /* body:has(.dialog.dialog-fixedSize.opened,
         .dialog.dialog-fullscreen-lowres.opened) {
         overflow: hidden;
-    }
+    } */
 }
 
 
@@ -2208,6 +2296,17 @@ div[data-type="PhotoAlbum"] .play_arrow:before {
     height: 3em;
     min-width: 10em;
     margin-right: .5em !important;
+    flex-direction: row;
+}
+
+.btnPlay:after {
+    content: attr(title);
+    padding: 0 1ch;
+}
+
+.btnPlay>.detailButton-content::after {
+    padding: 0 1ch;
+    place-content: center;
 }
 
 .btnPlay>.detailButton-content {
@@ -2222,7 +2321,7 @@ div[data-type="PhotoAlbum"] .play_arrow:before {
     justify-content: flex-start;
 }
 
-.mainDetailButtons:has(.detailButton[data-type="Book"]) .btnPlay[title="Play"]>.detailButton-content::after {
+.mainDetailButtons:has(.detailButton[data-type="Book"]) .btnPlay[title="Play"]:after {
     content: "Read";
 }
 
@@ -2231,22 +2330,9 @@ div[data-type="PhotoAlbum"] .play_arrow:before {
     padding-inline-end: 1ch;
 }
 
-.btnPlay[title="Play"]>.detailButton-content::after {
-    content: "Play";
-}
-
-.btnPlay[title="Resume"]>.detailButton-content::after {
-    content: "Resume";
-}
-
-.btnPlay>.detailButton-content::after {
-    padding: 0 1ch;
-    place-content: center;
-}
-
 .mainDetailButtons {
     justify-content: center;
-    margin: 0 0 1em 0;
+    margin: 0;
 }
 
 .layout-mobile [dir=ltr] .mainDetailButtons {
@@ -2257,7 +2343,7 @@ div[data-type="PhotoAlbum"] .play_arrow:before {
 @media (min-width: 100em) {
     .mainDetailButtons {
         font-size: unset;
-        margin: 0 0 1em 0;
+        margin: 0;
     }
 }
 
@@ -2514,7 +2600,7 @@ div[data-role=controlgroup] a.ui-btn-active {
     row-gap: 1em;
     column-gap: 3em;
     max-width: unset !important;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
 }
 
 .layout-mobile .detailSection {
@@ -2525,10 +2611,6 @@ div[data-role=controlgroup] a.ui-btn-active {
     gap: 1em;
 }
 
-.detailImageContainer .card {
-    position: inherit !important;
-}
-
 .trackSelections {
     order: 3;
     max-width: unset !important;
@@ -2536,8 +2618,12 @@ div[data-role=controlgroup] a.ui-btn-active {
     border: var(--defaultBorder);
     border-radius: var(--smallRadius);
     padding: 1em;
-    grid-column: 2;
+    grid-column: 3 / 5;
     background-color: var(--lighterGradientPointAlpha);
+}
+
+.layout-tv .trackSelections {
+    order: 2;
 }
 
 .recordingFields {
@@ -2598,19 +2684,41 @@ div[data-role=controlgroup] a.ui-btn-active {
 
 .itemDetailsGroup {
     order: 2;
-    grid-column: 1;
+    grid-column: 1 / 3;
+}
+
+.layout-tv .itemDetailsGroup {
+    order: 2;
 }
 
 .trackSelections.hide~.recordingFields.hide~.itemDetailsGroup {
     grid-column: 1 / -1;
 }
 
+.detailSection>.nextUpSection {
+    order: 5;
+    grid-column: 1;
+}
+
+.detailSection>#listChildrenCollapsible {
+    order: 6;
+    grid-column: 2 / -1;
+}
+
+.nextUpSection.hide~#listChildrenCollapsible {
+    grid-column: 1 / -1;
+}
+
 .layout-mobile .trackSelections,
 .layout-mobile .detailSectionContent,
 .layout-mobile .itemDetailsGroup,
+.layout-mobile .nextUpSection,
+.layout-mobile .detailSection>#listChildrenCollapsible,
 .layout-tv .trackSelections,
 .layout-tv .detailSectionContent,
-.layout-tv .itemDetailsGroup {
+.layout-tv .itemDetailsGroup,
+.layout-tv .nextUpSection,
+.layout-tv .detailSection>#listChildrenCollapsible {
     grid-column: 1 / -1;
 }
 
@@ -2661,14 +2769,21 @@ div[data-role=controlgroup] a.ui-btn-active {
     padding-right: 6.5%;
 }
 
-.detailPagePrimaryContent.padded-right {
+/* test disabled for 10.11.0 */
+/* .detailPagePrimaryContent.padded-right {
     padding-right: 0 !important;
-}
+} */
 
 [dir=ltr] .detailPageContent,
 .content-primary {
     padding-left: var(--sidePadding) !important;
     padding-right: var(--sidePadding) !important;
+}
+
+/* this prevents double padding on Jellyfin pre-10.11.0 */
+[dir=ltr] .detailPageContent>.detailPagePrimaryContent {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
 }
 
 /* this removes right padding from cast page sections to place cards evenly*/
@@ -2784,19 +2899,20 @@ div[data-role=controlgroup] a.ui-btn-active {
     color: white;
 }
 
+.skip-button-container {
+    bottom: 25%;
+}
+
 .skip-button {
     background-color: whitesmoke;
     box-shadow: var(--shadow);
-    bottom: 25%;
-    right: var(--sidePadding);
+    margin-right: var(--sidePadding);
 }
 
-/* this workaround allows the skip button get focused correctly on TVs using remote navigation*/
-/* issue: back button can no longer be focused correctly when this button is focused, 
-but that is a non-issue because users can use the back button on their remotes */
+/* this allows the skip button get focused correctly on TVs using remote navigation; needs 10.10.7*/
 .layout-tv .skip-button {
-    right: unset;
-    left: var(--sidePadding);
+    margin-right: auto;
+    margin-left: var(--sidePadding);
 }
 
 .skip-button:hover {
@@ -2895,6 +3011,11 @@ but that is a non-issue because users can use the back button on their remotes *
 
 .emby-textarea {
     font-family: consolas, monaco, monospace;
+}
+
+.customCssContainer textarea {
+    max-height: 40vh;
+    overflow-y: auto !important;
 }
 
 .emby-select-withcolor,
@@ -3442,39 +3563,26 @@ ul.MuiList-root.MuiMenu-list.MuiList-dense>div:first-child {
     transition: transform .5s;
 }
 
-/* this is the default header, visible in home and libraries */
-.skinHeader-blurred:not(.osdHeader) {
-    backdrop-filter: none;
-    background-color: transparent;
-    border: none;
-    background: var(--headerBackground);
-    padding-top: .75em;
+/* this is the default solid header, visible in home and libraries */
+.skinHeader-blurred:not(.osdHeader):not(.semiTransparent) {
+    backdrop-filter: var(--blurLarge);
+    background: var(--headerColor);
+    border: var(--defaultBorder);
+    border-width: 0 0 var(--borderWidth) 0;
 }
 
-.layout-mobile .skinHeader-blurred:not(.osdHeader) {
-    padding-top: .25em;
-}
-
+.layout-mobile .skinHeader-blurred:not(.osdHeader),
 .layout-mobile .withSectionTabs .headerTop {
-    padding-bottom: 1.45em;
-}
-
-.skinHeader-blurred:not(.osdHeader):not(.semiTransparent)::after {
-    content: var(--headerBlurLayerVisibility);
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    backdrop-filter: var(--blurLargest);
-    -webkit-mask: var(--headerBlurMask);
-    mask: var(--headerBlurMask);
-    z-index: -1;
+    padding: 0;
 }
 
 .headerTabs.sectionTabs {
-    margin: 0;
-    height: 6em;
+    display: grid;
+    height: var(--appBarHeight);
+}
+
+.layout-mobile .headerTabs.sectionTabs {
+    align-content: center;
 }
 
 /* this is the transparent header, visible in main media page */
@@ -3500,14 +3608,29 @@ ul.MuiList-root.MuiMenu-list.MuiList-dense>div:first-child {
 
 /* this keeps the header elements aligned when its height is modified */
 .headerTop {
-    -webkit-align-items: flex-end;
-    align-items: flex-end;
+    -webkit-align-items: center;
+    align-items: center;
+    /* this removes different padding set on different layouts in various media queries */
+    padding: 0;
+    height: var(--appBarHeight);
+}
+
+.osdHeader .headerTop {
+    max-height: var(--appBarHeight);
+}
+
+.layout-desktop .headerTop {
+    padding: 0 1em;
+}
+
+.layout-tv .headerTop {
+    padding: 0 .5em;
 }
 
 /* this prevents the section tabs from hiding all the way up */
 .headroom--unpinned {
-    -webkit-transform: translateY(-3.7em);
-    transform: translateY(-3.7em);
+    -webkit-transform: translateY(calc(-1 * var(--appBarHeight) - var(--borderWidth)));
+    transform: translateY(calc(-1 * var(--appBarHeight) - var(--borderWidth)));
 }
 
 .noHomeButtonHeader .emby-tab-button[data-index="1"]:before {
@@ -3532,7 +3655,8 @@ ul.MuiList-root.MuiMenu-list.MuiList-dense>div:first-child {
 .layout-tv .sectionTabs {
     /* this prevents the section tabs from being off-center in the music library
      after I set the overflow to visible to fix visual glitches */
-    width: 100%;
+    width: 70%;
+    margin-right: 2em;
 }
 
 .headerTabs.sectionTabs .emby-tab-button {
@@ -3562,58 +3686,123 @@ ul.MuiList-root.MuiMenu-list.MuiList-dense>div:first-child {
 
 @media (min-width: 75em) {
 
-    .layout-desktop .sectionTabs,
-    .layout-mobile .sectionTabs {
+    .sectionTabs {
         -webkit-align-items: center;
         align-items: center;
         -webkit-align-self: center;
         align-self: center;
         -webkit-justify-content: center;
         justify-content: center;
-        margin-top: -3em;
+        margin-top: calc(-1 * var(--appBarHeight));
         position: relative;
         width: auto;
     }
 
+    /* this reduces top page padding when section tabs are minimised */
     .libraryPage:not(.noSecondaryNavPage):not(.layout-tv .libraryPage) {
         padding-top: 6.8em !important;
     }
 }
 
 @media (max-width: 100em) {
+
+    /* this makes the font size consistent */
     .sectionTabs {
         font-size: 100%;
     }
 }
 
+/* this increased top page padding when section tabs are maximised */
 .libraryPage:not(.noSecondaryNavPage) {
     padding-top: 9.5em !important;
 }
 
+/* this limits top page padding when section tabs always on TVs */
+.layout-tv .libraryPage:not(.noSecondaryNavPage) {
+    padding-top: 6em !important;
+}
+
 .layout-tv .headerLeft {
     overflow: unset;
-    margin: .25em .5em;
+    margin: 0em .6em;
+}
+
+/* this allows switching between the header styles easily */
+#reactRoot>div:nth-of-type(3) {
+    container-name: skinHeader;
+    container-type: size;
+    height: var(--appBarHeight);
+}
+
+@container skinHeader (min-height: 4.9em) {
+
+    /* this is the alternative faded app bar */
+    .skinHeader-blurred:not(.osdHeader):not(.semiTransparent) {
+        backdrop-filter: none;
+        background-color: transparent;
+        border: none;
+        background: var(--headerBackground);
+        padding: 0;
+    }
+
+    .skinHeader-blurred:not(.osdHeader):not(.semiTransparent)::after {
+        content: var(--headerBlurLayerVisibility);
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        backdrop-filter: var(--blurLargest);
+        -webkit-mask: var(--headerBlurMask);
+        mask: var(--headerBlurMask);
+        z-index: -1;
+    }
+
+    .layout-mobile .headerTop {
+        height: calc(var(--appBarHeight) - 1em);
+    }
+
+    .headerTabs.sectionTabs {
+        padding-bottom: 1.5em;
+    }
+
+    .layout-mobile .headerTabs.sectionTabs {
+        align-content: center;
+    }
+
+    .headroom--unpinned {
+        -webkit-transform: translateY(calc(-.75 * var(--appBarHeight) - var(--borderWidth)));
+        transform: translateY(calc(-.75 * var(--appBarHeight) - var(--borderWidth)));
+    }
+
 }
 
 .remoteControlContent {
     padding: 0 var(--sidePadding) !important;
 }
 
-/* Uncomment this to bring back the original ElegantFin header design - start */
-
-/* .skinHeader-blurred:not(.osdHeader):not(.semiTransparent) {
-    backdrop-filter: var(--blurLarge);
-    background: var(--headerColor);
-    border: var(--defaultBorder);
-    border-width: 0 0 var(--borderWidth) 0;
-}
-
-.skinHeader-blurred:not(.osdHeader):not(.semiTransparent)::after {
-    content: none;
-}
-
-.headerTabs.sectionTabs {
-    height: 4em;
+/* .layout-tv *,
+.layout-tv *::before,
+.layout-tv *::after {
+    transition-duration: .1s;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    box-shadow: none;
+    text-shadow: none;
+    filter: none !important;
+    -webkit-filter: none !important;
 } */
 
-/* Uncomment this to bring back the original ElegantFin header design - end */
+/* .layout-tv .show-focus:not(.card):focus,
+.layout-tv .show-animation:not(.card):focus {
+    transform: none !important;
+} */
+
+/* .layout-tv .blurhash-canvas {
+    display: none !important;
+} */
+
+.layout-tv .show-focus:focus,
+.layout-tv .show-animation:focus {
+    transform: none !important;
+}
