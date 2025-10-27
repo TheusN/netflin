@@ -1,270 +1,218 @@
 <!-- Banner Image -->
 <img src="https://github.com/lscambo13/ElegantFin/blob/main/Theme/assets/img/banner.png?raw=true" alt="ElegantFin Theme for Jellyfin - Banner">
 
-# ⭐ ElegantFin Theme
-This is a Jellyfin theme inspired from Jellyseerr to improve the overall look and experience with various fixes to the UI/UX. It gives Jellyfin a fresh, modern look, and it aims to work on mobile, desktop, and TV, with just one import.
+# ⭐ Netflin - Tema ElegantFin para Jellyfin
 
+Um tema moderno e elegante para Jellyfin inspirado no Jellyseerr. Oferece uma experiência visual aprimorada com correções de UI/UX, proporcionando ao Jellyfin uma aparência fresca e moderna que funciona perfeitamente em dispositivos móveis, desktop e TV.
 
-#### **Author:** [lscambo13](https://github.com/lscambo13)
+---
 
-<hr>
+## ✨ Características Principais
+- 🎨 Layouts modernos e paleta de cores refinada
+- ✨ Animações aprimoradas na maioria dos elementos
+- 🔲 Cantos arredondados e espaçamento uniforme
+- 🎭 Bordas estilizadas, efeitos de hover e sombras
+- 📐 Layout organizado que destaca o conteúdo importante
+- 🧹 Redução de elementos desnecessários
+- 🔧 Várias correções para melhorar a experiência do usuário
+- 📱 Design consistente em celular, desktop e TV
 
-### ✨ Key Features  
-- modern layouts and color tones
-- new and improved animations on most elements
-- rounded corners and even spacing everywhere
-- stylish borders, hover effects and shadows
-- neat layout that puts important stuff up front
-- reduced unnecessary clutter
-- various fixes to improve the user experience
-- same clean design across phone, desktop, and TV
+---
 
-<hr>
+## 🚀 Como Instalar
 
-### 🖼️ Theme Showcase 
-Captured on ElegantFin v25.08.02
+**Cole o seguinte código na caixa de Custom CSS:**
+
+```css
+@import url("https://cdn.jsdelivr.net/gh/TheusN/netflin@main/Theme/ElegantFin-jellyfin-theme-build-latest-minified.css");
+```
 
 <details>
-  <summary> 💻 <i>Desktop and </i>📱 <i>Mobile Screenshots</i></summary>
+  <summary><i>Passos detalhados para implementação no servidor</i></summary>
 
-| Desktop                                                                                                          | Mobile                                                                                                         |
-| ---------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- |
-| <div align="center"><img src="https://github.com/lscambo13/ElegantFin/blob/main/Previews/previews-v25.08.02/optimized/desktop/21.%20Login%20Page.webp?raw=true"><br><strong>Login Page</strong></div>         | <div align="center"><img src="https://github.com/lscambo13/ElegantFin/blob/main/Previews/previews-v25.08.02/optimized/mobile/21.%20Login%20Page.webp?raw=true"></div>         |
-| <div align="center"><img src="https://github.com/lscambo13/ElegantFin/blob/main/Previews/previews-v25.08.02/optimized/desktop/1.%20Homepage.webp?raw=true"><br><strong>Homepage</strong></div>             | <div align="center"><img src="https://github.com/lscambo13/ElegantFin/blob/main/Previews/previews-v25.08.02/optimized/mobile/1.%20Homepage.webp?raw=true"></div>             |
-| <div align="center"><img src="https://github.com/lscambo13/ElegantFin/blob/main/Previews/previews-v25.08.02/optimized/desktop/2.%20Movies%20Library.webp?raw=true"><br><strong>Movies Library</strong></div> | <div align="center"><img src="https://github.com/lscambo13/ElegantFin/blob/main/Previews/previews-v25.08.02/optimized/mobile/2.%20Movies%20Library.webp?raw=true"></div>     |
-| <div align="center"><img src="https://github.com/lscambo13/ElegantFin/blob/main/Previews/previews-v25.08.02/optimized/desktop/4.%20Movie%20Page.webp?raw=true"><br><strong>Movie Page</strong></div>         | <div align="center"><img src="https://github.com/lscambo13/ElegantFin/blob/main/Previews/previews-v25.08.02/optimized/mobile/4.%20Movie%20Page.webp?raw=true"></div>         |
-| <div align="center"><img src="https://github.com/lscambo13/ElegantFin/blob/main/Previews/previews-v25.08.02/optimized/desktop/12.%20Movie%20Details.webp?raw=true"><br><strong>Movie Details</strong></div> | <div align="center"><img src="https://github.com/lscambo13/ElegantFin/blob/main/Previews/previews-v25.08.02/optimized/mobile/12.%20Movie%20Details.webp?raw=true"></div>     |
-| <div align="center"><img src="https://github.com/lscambo13/ElegantFin/blob/main/Previews/previews-v25.08.02/optimized/desktop/11.%20TV%20Show%20Page.webp?raw=true"><br><strong>TV Show Page</strong></div> | <div align="center"><img src="https://github.com/lscambo13/ElegantFin/blob/main/Previews/previews-v25.08.02/optimized/mobile/11.%20TV%20Show%20Page.webp?raw=true"></div>    |
-| <div align="center"><img src="https://github.com/lscambo13/ElegantFin/blob/main/Previews/previews-v25.08.02/optimized/desktop/18.%20TV%20Episode%20Page.webp?raw=true"><br><strong>TV Episode Page</strong></div> | <div align="center"><img src="https://github.com/lscambo13/ElegantFin/blob/main/Previews/previews-v25.08.02/optimized/mobile/18.%20TV%20Episode%20Page.webp?raw=true"></div> |
-| <div align="center"><img src="https://github.com/lscambo13/ElegantFin/blob/main/Previews/previews-v25.08.02/optimized/desktop/16.%20TV%20Show%20Seasons.webp?raw=true"><br><strong>TV Show Seasons</strong></div> | <div align="center"><img src="https://github.com/lscambo13/ElegantFin/blob/main/Previews/previews-v25.08.02/optimized/mobile/16.%20TV%20Show%20Seasons.webp?raw=true"></div> |
-| <div align="center"><img src="https://github.com/lscambo13/ElegantFin/blob/main/Previews/previews-v25.08.02/optimized/desktop/9.%20Web%20Player.webp?raw=true"><br><strong>Web Player</strong></div>         | <div align="center"><img src="https://github.com/lscambo13/ElegantFin/blob/main/Previews/previews-v25.08.02/optimized/mobile/9.%20Web%20Player.webp?raw=true"></div>         |
-| <div align="center"><img src="https://github.com/lscambo13/ElegantFin/blob/main/Previews/previews-v25.08.02/optimized/desktop/17.%20Cast%20Page.webp?raw=true"><br><strong>Cast Page</strong></div>          | <div align="center"><img src="https://github.com/lscambo13/ElegantFin/blob/main/Previews/previews-v25.08.02/optimized/mobile/17.%20Cast%20Page.webp?raw=true"></div>         |
-| <div align="center"><img src="https://github.com/lscambo13/ElegantFin/blob/main/Previews/previews-v25.08.02/optimized/desktop/14.%20Artist%20Page.webp?raw=true"><br><strong>Artist Page</strong></div>       | <div align="center"><img src="https://github.com/lscambo13/ElegantFin/blob/main/Previews/previews-v25.08.02/optimized/mobile/14.%20Artist%20Page.webp?raw=true"></div>       |
-| <div align="center"><img src="https://github.com/lscambo13/ElegantFin/blob/main/Previews/previews-v25.08.02/optimized/desktop/15.%20Music%20Player.webp?raw=true"><br><strong>Music Player</strong></div>     | <div align="center"><img src="https://github.com/lscambo13/ElegantFin/blob/main/Previews/previews-v25.08.02/optimized/mobile/15.%20Music%20Player.webp?raw=true"></div>      |
-| <div align="center"><img src="https://github.com/lscambo13/ElegantFin/blob/main/Previews/previews-v25.08.02/optimized/desktop/13.%20Book%20Page.webp?raw=true"><br><strong>Book Page</strong></div>          | <div align="center"><img src="https://github.com/lscambo13/ElegantFin/blob/main/Previews/previews-v25.08.02/optimized/mobile/13.%20Book%20Page.webp?raw=true"></div>         |
-| <div align="center"><img src="https://github.com/lscambo13/ElegantFin/blob/main/Previews/previews-v25.08.02/optimized/desktop/3.%20Sidebar.webp?raw=true"><br><strong>Sidebar</strong></div>                | <div align="center"><img src="https://github.com/lscambo13/ElegantFin/blob/main/Previews/previews-v25.08.02/optimized/mobile/3.%20Sidebar.webp?raw=true"></div>              |
-| <div align="center"><img src="https://github.com/lscambo13/ElegantFin/blob/main/Previews/previews-v25.08.02/optimized/desktop/5.%20Extra%20Dialog.webp?raw=true"><br><strong>Extra Dialog</strong></div>     | <div align="center"><img src="https://github.com/lscambo13/ElegantFin/blob/main/Previews/previews-v25.08.02/optimized/mobile/5.%20Extra%20Dialog.webp?raw=true"></div>       |
-| <div align="center"><img src="https://github.com/lscambo13/ElegantFin/blob/main/Previews/previews-v25.08.02/optimized/desktop/6.%20Settings%20Page.webp?raw=true"><br><strong>Settings Page</strong></div>   | <div align="center"><img src="https://github.com/lscambo13/ElegantFin/blob/main/Previews/previews-v25.08.02/optimized/mobile/6.%20Settings%20Page.webp?raw=true"></div>      |
-| <div align="center"><img src="https://github.com/lscambo13/ElegantFin/blob/main/Previews/previews-v25.08.02/optimized/desktop/7.%20Metadata%20Menu.webp?raw=true"><br><strong>Metadata Menu</strong></div>   | <div align="center"><img src="https://github.com/lscambo13/ElegantFin/blob/main/Previews/previews-v25.08.02/optimized/mobile/7.%20Metadata%20Menu.webp?raw=true"></div>      |
-| <div align="center"><img src="https://github.com/lscambo13/ElegantFin/blob/main/Previews/previews-v25.08.02/optimized/desktop/8.%20Dashboard%20Settings.webp?raw=true"><br><strong>Dashboard Settings</strong></div> | <div align="center"><img src="https://github.com/lscambo13/ElegantFin/blob/main/Previews/previews-v25.08.02/optimized/mobile/8.%20Dashboard%20Settings.webp?raw=true"></div> |
-| <div align="center"><img src="https://github.com/lscambo13/ElegantFin/blob/main/Previews/previews-v25.08.02/optimized/desktop/19.%20Live%20TV%20Page.webp?raw=true"><br><strong>Live TV Page</strong></div>   | <div align="center"><img src="https://github.com/lscambo13/ElegantFin/blob/main/Previews/previews-v25.08.02/optimized/mobile/19.%20Live%20TV%20Page.webp?raw=true"></div>    |
-| <div align="center"><img src="https://github.com/lscambo13/ElegantFin/blob/main/Previews/previews-v25.08.02/optimized/desktop/20.%20Live%20TV%20Guide.webp?raw=true"><br><strong>Live TV Guide</strong></div> | <div align="center"><img src="https://github.com/lscambo13/ElegantFin/blob/main/Previews/previews-v25.08.02/optimized/mobile/20.%20Live%20TV%20Guide.webp?raw=true"></div>   |
-
+1. Abra o Dashboard na aba Administração em Configurações
+2. Selecione a aba General na barra lateral
+3. Role para baixo até encontrar a caixa Custom CSS na seção Branding
+4. Cole o código CSS personalizado na caixa Custom CSS
+5. Clique em Salvar
 </details>
 
 <details>
-  <summary> 📺 <i>TV Screenshots</i></summary>
+  <summary><i>Passos detalhados para implementação no cliente</i></summary>
 
-| TV View                                                                                                         |
-| ------------------------------------------------------------------------------------------------------------- |
-| <div align="center"><img src="https://github.com/lscambo13/ElegantFin/blob/main/Previews/previews-v25.08.02/optimized/tv/21.%20Login%20Page.webp?raw=true"><br><strong>Login Page</strong></div>         |
-| <div align="center"><img src="https://github.com/lscambo13/ElegantFin/blob/main/Previews/previews-v25.08.02/optimized/tv/1.%20Homepage.webp?raw=true"><br><strong>Homepage</strong></div>             |
-| <div align="center"><img src="https://github.com/lscambo13/ElegantFin/blob/main/Previews/previews-v25.08.02/optimized/tv/2.%20Movies%20Library.webp?raw=true"><br><strong>Movies Library</strong></div> |
-| <div align="center"><img src="https://github.com/lscambo13/ElegantFin/blob/main/Previews/previews-v25.08.02/optimized/tv/4.%20Movie%20Page.webp?raw=true"><br><strong>Movie Page</strong></div>         |
-| <div align="center"><img src="https://github.com/lscambo13/ElegantFin/blob/main/Previews/previews-v25.08.02/optimized/tv/5.%20Extra%20Dialog.webp?raw=true"><br><strong>Extra Dialog</strong></div>     |
-| <div align="center"><img src="https://github.com/lscambo13/ElegantFin/blob/main/Previews/previews-v25.08.02/optimized/tv/6.%20Settings%20Page.webp?raw=true"><br><strong>Settings Page</strong></div>   |
-| <div align="center"><img src="https://github.com/lscambo13/ElegantFin/blob/main/Previews/previews-v25.08.02/optimized/tv/9.%20Web%20Player.webp?raw=true"><br><strong>Web Player</strong></div>         |
-| <div align="center"><img src="https://github.com/lscambo13/ElegantFin/blob/main/Previews/previews-v25.08.02/optimized/tv/11.%20TV%20Show%20Page.webp?raw=true"><br><strong>TV Show Page</strong></div> |
-| <div align="center"><img src="https://github.com/lscambo13/ElegantFin/blob/main/Previews/previews-v25.08.02/optimized/tv/12.%20Movie%20Details.webp?raw=true"><br><strong>Movie Details</strong></div> |
-| <div align="center"><img src="https://github.com/lscambo13/ElegantFin/blob/main/Previews/previews-v25.08.02/optimized/tv/13.%20Book%20Page.webp?raw=true"><br><strong>Book Page</strong></div>         |
-| <div align="center"><img src="https://github.com/lscambo13/ElegantFin/blob/main/Previews/previews-v25.08.02/optimized/tv/14.%20Artist%20Page.webp?raw=true"><br><strong>Artist Page</strong></div>     |
-| <div align="center"><img src="https://github.com/lscambo13/ElegantFin/blob/main/Previews/previews-v25.08.02/optimized/tv/15.%20Music%20Player.webp?raw=true"><br><strong>Music Player</strong></div>   |
-| <div align="center"><img src="https://github.com/lscambo13/ElegantFin/blob/main/Previews/previews-v25.08.02/optimized/tv/16.%20TV%20Show%20Seasons.webp?raw=true"><br><strong>TV Show Seasons</strong></div> |
-| <div align="center"><img src="https://github.com/lscambo13/ElegantFin/blob/main/Previews/previews-v25.08.02/optimized/tv/17.%20Cast%20Page.webp?raw=true"><br><strong>Cast Page</strong></div>         |
-| <div align="center"><img src="https://github.com/lscambo13/ElegantFin/blob/main/Previews/previews-v25.08.02/optimized/tv/18.%20TV%20Episode%20Page.webp?raw=true"><br><strong>TV Episode Page</strong></div> |
-| <div align="center"><img src="https://github.com/lscambo13/ElegantFin/blob/main/Previews/previews-v25.08.02/optimized/tv/19.%20Live%20TV%20Page.webp?raw=true"><br><strong>Live TV Page</strong></div> |
-| <div align="center"><img src="https://github.com/lscambo13/ElegantFin/blob/main/Previews/previews-v25.08.02/optimized/tv/20.%20Live%20TV%20Guide.webp?raw=true"><br><strong>Live TV Guide</strong></div> |
-
+1. Abra a aba Display em Configurações
+2. Role para baixo até encontrar a caixa Custom CSS
+3. Cole o código CSS personalizado na caixa Custom CSS
+4. Clique em Salvar
 </details>
 
+### 📡 Links Alternativos
 
+**jsDelivr CDN (Recomendado - Mais Rápido):**
+```css
+@import url("https://cdn.jsdelivr.net/gh/TheusN/netflin@main/Theme/ElegantFin-jellyfin-theme-build-latest-minified.css");
+```
 
+**Versão mais recente (v25.10.27):**
+```css
+@import url("https://cdn.jsdelivr.net/gh/TheusN/netflin@main/Theme/ElegantFin-theme-v25.10.27.css");
+```
 
-https://github.com/user-attachments/assets/bb7f3174-b703-4c98-a23c-e6bb4abba390
+**Versão Nightly (em desenvolvimento):**
+```css
+@import url("https://cdn.jsdelivr.net/gh/TheusN/netflin@main/Theme/ElegantFin-theme-nightly.css");
+```
 
+---
 
-<hr>
-
-### 👇 How to install/setup this theme? 
-
-<b>Paste the following in Custom CSS code box:</b>
-
-	@import url("https://cdn.jsdelivr.net/gh/lscambo13/ElegantFin@main/Theme/ElegantFin-jellyfin-theme-build-latest-minified.css");
-
-<details>
-  <summary><i>Detailed steps for server-side implementation</i></summary>
-
-1. Open Dashboard from Administration tab in Settings.
-2. Select General tab from the side bar.
-3. Scroll down to find Custom CSS code box under Branding section.
-4. Paste the custom css in Custom CSS code box.
-5. Click save
-</details>
+## 🧩 Como Personalizar
 
 <details>
-  <summary><i>Detailed steps for client-side implementation</i></summary>
-
-1. Open Display tab in Settings.
-2. Scroll down to find Custom CSS code box.
-3. Paste the custom css in Custom CSS code box.
-4. Click save.
-</details>
-
-
-<hr>
-
-### 🧩 How to customise this theme? 
-
-<details>
-  <summary><i>1. Custom media covers for user media libraries</i></summary>
+  <summary><i>1. Capas personalizadas para bibliotecas de mídia</i></summary>
 
 <img width="640" height="auto" alt="image" src="https://github.com/user-attachments/assets/05eb7cb6-3ac9-444b-8988-9776e0815664" />
 
-- Read more about this experimental add-on [here](https://github.com/lscambo13/ElegantFin/blob/main/custom-media-covers.md)
+- Leia mais sobre este complemento experimental [aqui](https://github.com/TheusN/netflin/blob/main/custom-media-covers.md)
 
 </details>
 
 <details>
-  <summary><i>2. Custom background image for the login page</i></summary>
+  <summary><i>2. Imagem de fundo personalizada para a página de login</i></summary>
 
 <img width="auto" height="350" alt="image" src="https://github.com/user-attachments/assets/70834545-d1cd-4496-975a-4310030dedd9" />
 <img width="auto" height="350" alt="image" src="https://github.com/user-attachments/assets/c3cf2d96-0db0-4acb-bc61-7b08d5445452" />
 
-
-- To enable the background wallpaper on the login screen, first tick the 'Enable the splash screen' option in your Jellyfin Dashboard below the Custom CSS Box.
-- Second, copy and paste the following code at the end in Custom CSS box but don't save yet.
-  ```
+- Para ativar o papel de parede na tela de login, primeiro marque a opção 'Ativar tela inicial' no seu Dashboard do Jellyfin abaixo da caixa Custom CSS
+- Segundo, copie e cole o seguinte código no final da caixa Custom CSS, mas não salve ainda:
+  ```css
   :root{
-    --loginPageBgUrl: url("<YOUR-JELLYFIN-SERVER-ADDRESS>/Branding/Splashscreen?format=webp&foregroundLayer=1&quality=33&width=3840&height=2160&blur=2");
+    --loginPageBgUrl: url("<SEU-ENDEREÇO-SERVIDOR-JELLYFIN>/Branding/Splashscreen?format=webp&foregroundLayer=1&quality=33&width=3840&height=2160&blur=2");
   }
   ```
-- Third, replace `<YOUR-JELLYFIN-SERVER-ADDRESS>` with your Jellyfin server address, for example, `http://192.168.0.1:8097`.
-- Don't forget the correct http or https in your domain.
-- You can also modify the parameters, for example blur size or the resolution, according to your liking.
-- Once done, save and refresh your apps and webpages.
+- Terceiro, substitua `<SEU-ENDEREÇO-SERVIDOR-JELLYFIN>` pelo endereço do seu servidor Jellyfin, por exemplo, `http://192.168.0.1:8097`
+- Não esqueça do http ou https correto no seu domínio
+- Você também pode modificar os parâmetros, por exemplo, tamanho do blur ou resolução, de acordo com sua preferência
+- Quando terminar, salve e atualize seus aplicativos e páginas web
 </details>
 
 <details>
-  <summary><i>3. Enable extra overlay buttons on cards on desktop</i></summary>
+  <summary><i>3. Ativar botões extras nos cards no desktop</i></summary>
 
   <img width="400" height="auto" alt="image" src="https://github.com/user-attachments/assets/cb8479c2-c577-4d54-a567-697f54291a3b" />
 
-
-- To enable 'Mark Played' and 'Add to Favorites' buttons that show up at the bottom right corner of cards while hovering, copy and paste the following code at the end in Custom CSS box, click save and finally refresh your app/webpage.
-  ```
+- Para ativar os botões 'Marcar como Assistido' e 'Adicionar aos Favoritos' que aparecem no canto inferior direito dos cards ao passar o mouse, copie e cole o seguinte código no final da caixa Custom CSS, clique em salvar e atualize seu app/página:
+  ```css
   :root{
     --extraCardButtonsVisibility: block;
   }
   ```
-- To hide them again, simply remove this code block or replace `block` with `none`.
+- Para ocultá-los novamente, simplesmente remova este bloco de código ou substitua `block` por `none`
 </details>
 
 <details>
-  <summary><i>4. Place the overlay play button at the center of cards on desktop</i></summary>
+  <summary><i>4. Posicionar o botão play no centro dos cards no desktop</i></summary>
 
   <img width="400" height="auto" alt="image" src="https://github.com/user-attachments/assets/ebde9db6-cd2f-47b5-bdb9-cee1e9852e2e" />
 
-
-- To bring the mini play button to the center of cards, copy and paste the following code at the end in Custom CSS box, click save and finally refresh your app/webpage.
-  ```
+- Para trazer o mini botão play para o centro dos cards, copie e cole o seguinte código no final da caixa Custom CSS, clique em salvar e atualize seu app/página:
+  ```css
   :root{
     --overlayPlayButtonPosition: 50%;
   }
   ```
-- To undo this change, simply remove this code block or replace `50%` with `2.8em`.
+- Para desfazer esta alteração, simplesmente remova este bloco de código ou substitua `50%` por `2.8em`
 </details>
 
 <details>
-  <summary><i>5. Disable the card hover effect on desktop</i></summary>
+  <summary><i>5. Desativar o efeito hover nos cards no desktop</i></summary>
 
 https://github.com/user-attachments/assets/ac22440d-39d7-48d6-a8da-3b7777372ffd
 
-- To disable the reflection on cards that shows when hovering over them on desktop, copy and paste the following code at the end in Custom CSS box, click save and finally refresh your app/webpage.
-```
+- Para desativar o reflexo nos cards que aparece ao passar o mouse sobre eles no desktop, copie e cole o seguinte código no final da caixa Custom CSS, clique em salvar e atualize seu app/página:
+```css
   :root{
     --cardHoverEffect: none;
   }
 ```
-- To undo this change, simply remove this code block or replace `none` with `""`.
+- Para desfazer esta alteração, simplesmente remova este bloco de código ou substitua `none` por `""`
 </details>
 
 <details>
-  <summary><i>6. Enable labels below library cards</i></summary>
+  <summary><i>6. Ativar legendas abaixo dos cards de biblioteca</i></summary>
 
   <img width="640" height="auto" alt="image" src="https://github.com/user-attachments/assets/5999a5de-5134-4b02-94aa-6306768a251c" />
 
-
-- To enable text labels under the media library cards, copy and paste the following code at the end in Custom CSS box, click save and finally refresh your app/webpage.
-```
+- Para ativar legendas de texto abaixo dos cards de biblioteca de mídia, copie e cole o seguinte código no final da caixa Custom CSS, clique em salvar e atualize seu app/página:
+```css
   :root{
     --libraryLabelVisibility: block;
   }
 ```
-- To undo this change, simply remove this code block or replace `block` with `none`.
+- Para desfazer esta alteração, simplesmente remova este bloco de código ou substitua `block` por `none`
 </details>
 
 <details>
-  <summary><i>7. Enable experimental support for the Media Bar plugin</i></summary>
+  <summary><i>7. Ativar suporte experimental para o plugin Media Bar</i></summary>
 
   <img width="640" height="auto" alt="image" src="https://github.com/user-attachments/assets/3e88e270-40f9-48ba-8173-f65b94344f8d" />
 
-
-- ElegantFin does not support any plugins by default, so to to add external support for [this plugin](https://github.com/IAmParadox27/jellyfin-plugin-media-bar), copy and paste the following code at the end in Custom CSS box, click save and finally refresh your app/webpage.
+- O ElegantFin não suporta plugins por padrão, então para adicionar suporte externo para [este plugin](https://github.com/IAmParadox27/jellyfin-plugin-media-bar), copie e cole o seguinte código no final da caixa Custom CSS, clique em salvar e atualize seu app/página:
+```css
+@import url("https://cdn.jsdelivr.net/gh/TheusN/netflin@main/Theme/assets/add-ons/media-bar-plugin-support-latest-min.css");
 ```
-	@import url("https://cdn.jsdelivr.net/gh/lscambo13/ElegantFin@main/Theme/assets/add-ons/media-bar-plugin-support-latest-min.css");
-```
-- To undo this change, simply remove this code block.
+- Para desfazer esta alteração, simplesmente remova este bloco de código
 </details>
 
-<hr>
+---
 
-### 🆗 Tested on 
+## 🆗 Testado em
 - Jellyfin Server v10.10.7
 - Microsoft Edge (Chromium)
 - Jellyfin Android App v2.6.3
 
-Note: Support for v10.11.0 is a work in progress
+**Nota:** Suporte para v10.11.0 está em desenvolvimento
 
-<hr>
+---
 
-### 🛠️ Troubleshooting 
+## 🛠️ Solução de Problemas
+
 <details>
-  <summary>1️⃣ - <i>How do I check if I am using the latest version of ElegantFin?</i></summary>
+  <summary>1️⃣ - <i>Como verifico se estou usando a versão mais recente do ElegantFin?</i></summary>
 
-- To make sure that you are using the latest version of ElegantFin, check the version number at the bottom in the Dashboard screen. 
-- It should be something like ElegantFin v25.07.XX
+- Para garantir que você está usando a versão mais recente do ElegantFin, verifique o número da versão na parte inferior da tela do Dashboard
+- Deve ser algo como ElegantFin v25.10.XX
 </details>
 
 <details>
-  <summary>2️⃣ - <i>I see that a newer version is available, but I have not received it yet. Why?</i></summary>
+  <summary>2️⃣ - <i>Vejo que uma nova versão está disponível, mas ainda não a recebi. Por quê?</i></summary>
 
-- If Dashboard footer shows an old version, it means that your app is still using an old cache.
-- Once that cache is updated, the new version will be loaded. 
-- To get the latest version, you will need to clear cache. There are multiple ways to do it.
-- On web version, force a hard refresh of the page using CTRL + F5.
-- On apps, try signing out and back in again. OR in case of Jellyfin Media Player on windows, you might need to delete the cache folder. That should definitely pull the latest version.
+- Se o rodapé do Dashboard mostra uma versão antiga, significa que seu app ainda está usando um cache antigo
+- Quando o cache for atualizado, a nova versão será carregada
+- Para obter a versão mais recente, você precisará limpar o cache. Existem várias maneiras de fazer isso:
+- Na versão web, force uma atualização da página usando CTRL + F5
+- Nos apps, tente fazer logout e login novamente. OU no caso do Jellyfin Media Player no Windows, você pode precisar deletar a pasta de cache. Isso definitivamente puxará a versão mais recente
 </details>
 
 <details>
-  <summary>3️⃣ - <i>Why do I notice visual bugs and inconsistencies on Jellyfin Media Player?</i></summary>
+  <summary>3️⃣ - <i>Por que noto bugs visuais e inconsistências no Jellyfin Media Player?</i></summary>
 
-- As of version 1.12.0, JMP is based on Qt 5.x which uses a very outdated web engine, so it does not support many new CSS features. Once a new version based on Qt 6.x is released, most issues should automatically be resolved. Until then, JMP is unsupported and I recommend using the web app instead.
+- A partir da versão 1.12.0, o JMP é baseado em Qt 5.x que usa um motor web muito desatualizado, então não suporta muitos recursos CSS novos. Quando uma nova versão baseada em Qt 6.x for lançada, a maioria dos problemas deve ser resolvida automaticamente. Até lá, o JMP não é suportado e eu recomendo usar o app web
 </details>
 
 <details>
-  <summary>4️⃣ - <i>Does it work on the AndroidTV version of the Jellyfin app?</i></summary>
+  <summary>4️⃣ - <i>Funciona na versão AndroidTV do app Jellyfin?</i></summary>
 
-- As of version 0.18.11, the official Jellyfin app on the AndroidTVs does not support css themes, but the Android mobile phone app supports them. The WebOS version of the app seems to be based on the mobile phone version, so it supports the theme just fine.
+- A partir da versão 0.18.11, o app oficial Jellyfin para AndroidTVs não suporta temas CSS, mas o app Android para celular suporta. A versão WebOS do app parece ser baseada na versão do celular, então suporta o tema perfeitamente
 </details>
 
 <details>
-  <summary>5️⃣ - <i>All the icons on my LG TV seem to be broken. How to fix them?</i></summary>
+  <summary>5️⃣ - <i>Todos os ícones na minha TV LG parecem quebrados. Como corrigir?</i></summary>
 
-- It seems that modern Material Icons which this theme uses are [not compatible on some WebOS TVs](https://github.com/lscambo13/ElegantFin/issues/39). There is a [huge similar thread](https://www.reddit.com/r/youtubetv/comments/e27go3/chinese_symbols_instead_of_icons_on_lg_tv/) about this.
-- This bug can be fixed by using the older icons, so I have implemented the following workaround to bring back older, supported icons.
-- Simply add the following code at the end in Custom CSS box and save, then refresh your apps and webpages:
-  
-  ```
+- Parece que os ícones Material modernos que este tema usa [não são compatíveis com algumas TVs WebOS](https://github.com/lscambo13/ElegantFin/issues/39). Há [uma thread similar enorme](https://www.reddit.com/r/youtubetv/comments/e27go3/chinese_symbols_instead_of_icons_on_lg_tv/) sobre isso
+- Este bug pode ser corrigido usando os ícones antigos, então implementei a seguinte solução para trazer de volta os ícones antigos suportados
+- Simplesmente adicione o seguinte código no final da caixa Custom CSS e salve, depois atualize seus apps e páginas web:
+
+  ```css
   :root{
     --iconPack: 'Material Icons';
   }
@@ -272,27 +220,41 @@ Note: Support for v10.11.0 is a work in progress
 </details>
 
 <details>
-  <summary>6️⃣ - <i>How do I report bugs/issues?</i></summary>
+  <summary>6️⃣ - <i>Como reporto bugs/problemas?</i></summary>
 
-- First check [here](https://github.com/lscambo13/ElegantFin/issues?q=) whether a similar issue has been reported already. If it exists, upvote and comment there to let me know. 
-- Alternatively, create a new issue [here](https://github.com/lscambo13/ElegantFin/issues/new/choose).
-
-
-</details>
-<details>
-  <summary>7️⃣ - <i>When can I expect another update?</i></summary>
-
-- 🤷
+- Primeiro verifique [aqui](https://github.com/TheusN/netflin/issues?q=) se um problema similar já foi reportado. Se existir, vote e comente lá para me avisar
+- Alternativamente, crie um novo issue [aqui](https://github.com/TheusN/netflin/issues/new/choose)
 </details>
 
-<hr>
+---
 
-### 📌 Contributing
+## 📌 Contribuindo
 
-Please read the [Contributor Guidelines](./CONTRIBUTING.md) before opening pull requests.
+Por favor, leia as [Diretrizes de Contribuição](./CONTRIBUTING.md) antes de abrir pull requests.
 
+## 🙏 Feedback Apreciado
 
-### 🙏 Feedback Appreciated
+Por favor, use o template correto ao criar um [issue](https://github.com/TheusN/netflin/issues/new/choose) para [reportar bugs](https://github.com/TheusN/netflin/issues/new?template=bug_report.md) ou [fornecer sugestões](https://github.com/TheusN/netflin/issues/new?template=feature_request.md).
 
-Please use the right template when creating an [issue](https://github.com/lscambo13/ElegantFin/issues/new/choose) to [report bugs](https://github.com/lscambo13/ElegantFin/issues/new?template=bug_report.md) or [provide suggestions](https://github.com/lscambo13/ElegantFin/issues/new?template=feature_request.md).
+---
 
+## 📜 Créditos e Licença
+
+Este projeto é uma continuação e fork do **[ElegantFin](https://github.com/lscambo13/ElegantFin)** criado originalmente por **[lscambo13](https://github.com/lscambo13)**.
+
+**Mantido atualmente por:** [TheusN](https://github.com/TheusN)
+
+Todo o crédito pelo design e conceito original vai para o autor do ElegantFin. Este fork mantém o espírito e qualidade do projeto original, com melhorias e manutenção contínua.
+
+### 📄 Licença
+GPL-2.0 License - Use livremente!
+
+---
+
+<div align="center">
+
+**Desenvolvido com ❤️ para a comunidade Jellyfin**
+
+[⭐ ElegantFin Original](https://github.com/lscambo13/ElegantFin) • [🐛 Reportar Bug](https://github.com/TheusN/netflin/issues) • [💡 Sugerir Feature](https://github.com/TheusN/netflin/issues)
+
+</div>
