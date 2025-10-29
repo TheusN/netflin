@@ -14,10 +14,10 @@
     color-scheme: dark;
     --darkerGradientPoint: #000000;
     --darkerGradientPointAlpha: rgba(0, 0, 0, .85);
-    --lighterGradientPoint: #1d2635;
-    --lighterGradientPointAlpha: rgba(29, 38, 53, .85);
-    --headerColor: rgba(30, 40, 54, .8);
-    --drawerColor: rgba(30, 40, 54, .9);
+    --lighterGradientPoint: #0a0a0a;
+    --lighterGradientPointAlpha: rgba(10, 10, 10, .85);
+    --headerColor: rgba(15, 15, 15, .8);
+    --drawerColor: rgba(15, 15, 15, .9);
 
     --borderColor: hsl(214, 13%, 32%);
     --darkerBorderColor: hsl(214, 13%, 22%);
@@ -54,8 +54,8 @@
     /* textures */
     --backgroundGradient: linear-gradient(0deg, var(--darkerGradientPoint) 35%, var(--lighterGradientPoint));
     --cardBackgroundGradient: linear-gradient(0deg, var(--darkerGradientPoint), 25%, var(--lighterGradientPoint));
-    --headerColorGradient: linear-gradient(180deg, rgba(30, 40, 54, .95) 30%, 55%, transparent 90%);
-    --headerColorGradientAlt: linear-gradient(180deg, rgba(30, 40, 54, 1), 70%, transparent);
+    --headerColorGradient: linear-gradient(180deg, rgba(15, 15, 15, .95) 30%, 55%, transparent 90%);
+    --headerColorGradientAlt: linear-gradient(180deg, rgba(15, 15, 15, 1), 70%, transparent);
     --headerBlurMask: linear-gradient(180deg, white 50%, 85%, transparent);
 
     --cardFooterGradient: linear-gradient(0deg, rgb(0 0 0 / 90%), 40%, transparent);
@@ -3290,7 +3290,7 @@ ul.MuiList-root.MuiMenu-list.MuiList-dense>div:first-child {
 
 #loginPage .padded-left.padded-right.padded-bottom-page {
     width: 28em;
-    background: rgba(30, 40, 54, .7);
+    background: rgba(15, 15, 15, .7);
     padding: 2em 2em 1em 2em !important;
     border-radius: var(--largerRadius);
     backdrop-filter: var(--blurDefault);
