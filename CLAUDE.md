@@ -53,7 +53,7 @@ The theme uses CSS custom properties (variables) extensively for customization. 
 
 Users import the theme via:
 ```css
-@import url("https://cdn.jsdelivr.net/gh/lscambo13/ElegantFin@main/Theme/ElegantFin-jellyfin-theme-build-latest-minified.css");
+@import url("https://cdn.jsdelivr.net/gh/TheusN/netflin@main/Theme/ElegantFin-jellyfin-theme-build-latest-minified.css");
 ```
 
 ### Add-on System
