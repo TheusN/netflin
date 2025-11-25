@@ -1,0 +1,1097 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scripts JavaScript - Netflin/ElegantFin</title>
+    <style>
+        :root {
+            --bg-color: #0d0d0d;
+            --card-bg: #1a1a1a;
+            --text-color: #e5e5e5;
+            --text-muted: #808080;
+            --accent-color: #e50914;
+            --accent-hover: #f40612;
+            --border-color: #333;
+            --code-bg: #141414;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Netflix Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(to bottom, rgba(0,0,0,0.9), transparent);
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .logo {
+            font-size: 2em;
+            font-weight: 700;
+            color: var(--accent-color);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-links a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-size: 0.95em;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--text-muted);
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 60px 20px;
+            background: linear-gradient(135deg, rgba(229,9,20,0.1) 0%, transparent 50%);
+            border-radius: 0 0 20px 20px;
+            margin-bottom: 40px;
+        }
+
+        .hero h1 {
+            font-size: 2.5em;
+            margin-bottom: 15px;
+        }
+
+        .hero p {
+            color: var(--text-muted);
+            font-size: 1.1em;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Prerequisites */
+        .prerequisites {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 40px;
+            border: 1px solid var(--border-color);
+        }
+
+        .prerequisites h2 {
+            color: var(--accent-color);
+            margin-bottom: 20px;
+            font-size: 1.5em;
+        }
+
+        .prerequisites ol {
+            padding-left: 20px;
+        }
+
+        .prerequisites li {
+            margin-bottom: 12px;
+            color: var(--text-muted);
+        }
+
+        .prerequisites code {
+            background: var(--code-bg);
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-family: 'Monaco', 'Menlo', monospace;
+            font-size: 0.85em;
+            color: var(--text-color);
+            word-break: break-all;
+        }
+
+        .prerequisites a {
+            color: var(--accent-color);
+            text-decoration: none;
+        }
+
+        .prerequisites a:hover {
+            text-decoration: underline;
+        }
+
+        /* Script Cards */
+        .scripts-grid {
+            display: grid;
+            gap: 30px;
+        }
+
+        .script-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .script-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 40px rgba(229,9,20,0.2);
+        }
+
+        .script-header {
+            padding: 25px 30px;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .script-header h2 {
+            font-size: 1.4em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .script-header h2 span {
+            font-size: 1.2em;
+        }
+
+        .script-badge {
+            background: var(--accent-color);
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.75em;
+            font-weight: 600;
+        }
+
+        .script-content {
+            padding: 25px 30px;
+        }
+
+        .script-description {
+            color: var(--text-muted);
+            margin-bottom: 25px;
+            line-height: 1.7;
+        }
+
+        /* Features List */
+        .features-title {
+            font-size: 1em;
+            margin-bottom: 15px;
+            color: var(--text-color);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 10px;
+            margin-bottom: 25px;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-muted);
+            font-size: 0.9em;
+        }
+
+        .feature-item::before {
+            content: "✓";
+            color: #46d369;
+            font-weight: bold;
+        }
+
+        /* Config Table */
+        .config-section {
+            margin-bottom: 25px;
+        }
+
+        .config-title {
+            font-size: 1em;
+            margin-bottom: 15px;
+            color: var(--text-color);
+        }
+
+        .config-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.9em;
+        }
+
+        .config-table th,
+        .config-table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .config-table th {
+            color: var(--text-muted);
+            font-weight: 600;
+            font-size: 0.85em;
+            text-transform: uppercase;
+        }
+
+        .config-table td code {
+            background: var(--code-bg);
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: monospace;
+        }
+
+        /* Code Block */
+        .code-section {
+            margin-top: 20px;
+        }
+
+        .code-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #252525;
+            padding: 12px 20px;
+            border-radius: 8px 8px 0 0;
+            border: 1px solid var(--border-color);
+            border-bottom: none;
+        }
+
+        .code-header span {
+            color: var(--text-muted);
+            font-size: 0.85em;
+        }
+
+        .copy-btn {
+            background: var(--accent-color);
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.85em;
+            font-weight: 600;
+            transition: background 0.2s;
+        }
+
+        .copy-btn:hover {
+            background: var(--accent-hover);
+        }
+
+        .copy-btn.copied {
+            background: #46d369;
+        }
+
+        .code-block {
+            background: var(--code-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 0 0 8px 8px;
+            overflow: hidden;
+        }
+
+        .code-block pre {
+            margin: 0;
+            padding: 20px;
+            overflow-x: auto;
+            max-height: 500px;
+            overflow-y: auto;
+        }
+
+        .code-block code {
+            font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+            font-size: 0.85em;
+            line-height: 1.5;
+            color: #ccc;
+        }
+
+        /* Collapsible */
+        .collapsible {
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .collapsible-content {
+            display: none;
+        }
+
+        .collapsible-content.show {
+            display: block;
+        }
+
+        .expand-btn {
+            background: transparent;
+            border: 1px solid var(--border-color);
+            color: var(--text-color);
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.9em;
+            transition: all 0.2s;
+            width: 100%;
+            margin-top: 15px;
+        }
+
+        .expand-btn:hover {
+            background: var(--border-color);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            color: var(--text-muted);
+            border-top: 1px solid var(--border-color);
+            margin-top: 60px;
+        }
+
+        footer a {
+            color: var(--accent-color);
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 1.8em;
+            }
+
+            .script-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .config-table {
+                font-size: 0.8em;
+            }
+
+            .nav-links {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="header-content">
+            <a href="index.html" class="logo">NETFLIN</a>
+            <nav class="nav-links">
+                <a href="index.html">Tema CSS</a>
+                <a href="scripts.html">Scripts JS</a>
+                <a href="https://github.com/TheusN/netflin">GitHub</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="hero">
+        <h1>Scripts JavaScript</h1>
+        <p>Funcionalidades avançadas para transformar seu Jellyfin em uma experiência completa estilo Netflix</p>
+    </div>
+
+    <div class="container">
+        <!-- Prerequisites -->
+        <section class="prerequisites">
+            <h2>Pre-requisito: Instalar o JavaScript Injector</h2>
+            <ol>
+                <li>Acesse <strong>Dashboard > Plugins > Repositories</strong></li>
+                <li>Adicione o repositorio: <code>https://raw.githubusercontent.com/n00bcodr/jellyfin-plugin-repo/main/manifest.json</code></li>
+                <li>Va em <strong>Catalog</strong>, busque "JavaScript Injector" e instale</li>
+                <li>Reinicie o Jellyfin</li>
+                <li>Acesse <strong>Dashboard > Plugins > JavaScript Injector</strong> para adicionar scripts</li>
+            </ol>
+            <p style="margin-top: 15px; color: var(--text-muted);">
+                Link do plugin: <a href="https://github.com/n00bcodr/Jellyfin-JavaScript-Injector" target="_blank">Jellyfin JavaScript Injector</a>
+            </p>
+        </section>
+
+        <!-- Scripts -->
+        <div class="scripts-grid">
+            <!-- Banner Carousel -->
+            <article class="script-card" id="banner-carousel">
+                <div class="script-header">
+                    <h2><span>🎬</span> Banner Carousel</h2>
+                    <span class="script-badge">Desktop + Mobile</span>
+                </div>
+                <div class="script-content">
+                    <p class="script-description">
+                        Adiciona um carrossel no estilo Netflix na pagina inicial, exibindo os ultimos filmes e series adicionados
+                        com imagens de backdrop em tela cheia, sinopse e botoes de acao rapida.
+                    </p>
+
+                    <h3 class="features-title">Funcionalidades</h3>
+                    <div class="features-grid">
+                        <div class="feature-item">5 ultimos filmes</div>
+                        <div class="feature-item">5 ultimas series</div>
+                        <div class="feature-item">Autoplay a cada 8s</div>
+                        <div class="feature-item">Navegacao por setas</div>
+                        <div class="feature-item">Indicadores clicaveis</div>
+                        <div class="feature-item">Botao Assistir</div>
+                        <div class="feature-item">Botao Mais Info</div>
+                        <div class="feature-item">100% Responsivo</div>
+                    </div>
+
+                    <div class="config-section">
+                        <h3 class="config-title">Configuracoes Personalizaveis</h3>
+                        <table class="config-table">
+                            <thead>
+                                <tr>
+                                    <th>Variavel</th>
+                                    <th>Padrao</th>
+                                    <th>Descricao</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><code>movieCount</code></td>
+                                    <td><code>5</code></td>
+                                    <td>Quantidade de filmes</td>
+                                </tr>
+                                <tr>
+                                    <td><code>seriesCount</code></td>
+                                    <td><code>5</code></td>
+                                    <td>Quantidade de series</td>
+                                </tr>
+                                <tr>
+                                    <td><code>interval</code></td>
+                                    <td><code>8000</code></td>
+                                    <td>Tempo entre slides (ms)</td>
+                                </tr>
+                                <tr>
+                                    <td><code>transitionDuration</code></td>
+                                    <td><code>800</code></td>
+                                    <td>Duracao da transicao (ms)</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <button class="expand-btn" onclick="toggleCode('banner-code')">
+                        Ver Codigo Completo
+                    </button>
+
+                    <div id="banner-code" class="collapsible-content">
+                        <div class="code-section">
+                            <div class="code-header">
+                                <span>banner-carousel.js</span>
+                                <button class="copy-btn" onclick="copyCode('banner-carousel-code')">Copiar Codigo</button>
+                            </div>
+                            <div class="code-block">
+                                <pre><code id="banner-carousel-code">/**
+ * ElegantFin Banner Carousel
+ * Exibe um carrossel com os 5 ultimos filmes e 5 ultimas series adicionados
+ * Para uso com Jellyfin JavaScript Injector
+ */
+
+(function() {
+    'use strict';
+
+    // Configuracoes do carrossel
+    const CONFIG = {
+        movieCount: 5,           // Quantidade de filmes
+        seriesCount: 5,          // Quantidade de series
+        interval: 8000,          // Tempo entre slides (ms)
+        transitionDuration: 800, // Duracao da transicao (ms)
+        showOnPages: ['home'],   // Paginas onde exibir o carrossel
+    };
+
+    // Variaveis globais
+    let currentSlide = 0;
+    let slides = [];
+    let autoPlayInterval = null;
+    let carouselContainer = null;
+
+    // Aguarda o DOM e a API do Jellyfin estarem prontos
+    function init() {
+        // Verifica se ja foi inicializado
+        if (document.getElementById('elegantfin-banner-carousel')) {
+            return;
+        }
+
+        // Aguarda a pagina home carregar
+        const checkPage = setInterval(() => {
+            const isHomePage = window.location.hash === '#!/home.html' ||
+                               window.location.hash.includes('home') ||
+                               document.querySelector('.homePage');
+
+            if (isHomePage && window.ApiClient) {
+                clearInterval(checkPage);
+                loadCarouselData();
+            }
+        }, 500);
+    }
+
+    // Busca dados da API do Jellyfin
+    async function loadCarouselData() {
+        try {
+            const userId = window.ApiClient.getCurrentUserId();
+
+            // Busca filmes e series em paralelo
+            const [moviesResponse, seriesResponse] = await Promise.all([
+                window.ApiClient.getLatestItems({
+                    UserId: userId,
+                    Limit: CONFIG.movieCount,
+                    IncludeItemTypes: 'Movie',
+                    Fields: 'Overview,Backdrop,Logo',
+                    EnableImages: true,
+                    ImageTypeLimit: 1
+                }),
+                window.ApiClient.getLatestItems({
+                    UserId: userId,
+                    Limit: CONFIG.seriesCount,
+                    IncludeItemTypes: 'Series',
+                    Fields: 'Overview,Backdrop,Logo',
+                    EnableImages: true,
+                    ImageTypeLimit: 1
+                })
+            ]);
+
+            // Combina e embaralha os resultados
+            slides = [...moviesResponse, ...seriesResponse];
+            slides = shuffleArray(slides);
+
+            if (slides.length > 0) {
+                createCarousel();
+                startAutoPlay();
+            }
+        } catch (error) {
+            console.error('ElegantFin Carousel: Erro ao carregar dados', error);
+        }
+    }
+
+    // Embaralha array (Fisher-Yates)
+    function shuffleArray(array) {
+        const shuffled = [...array];
+        for (let i = shuffled.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+        }
+        return shuffled;
+    }
+
+    // Cria a estrutura HTML do carrossel
+    function createCarousel() {
+        // Remove carrossel existente se houver
+        const existing = document.getElementById('elegantfin-banner-carousel');
+        if (existing) existing.remove();
+
+        // Cria container principal
+        carouselContainer = document.createElement('div');
+        carouselContainer.id = 'elegantfin-banner-carousel';
+        carouselContainer.innerHTML = \`
+            &lt;div class="efin-carousel-wrapper"&gt;
+                &lt;div class="efin-carousel-slides"&gt;
+                    \${slides.map((item, index) => createSlideHTML(item, index)).join('')}
+                &lt;/div&gt;
+                &lt;div class="efin-carousel-overlay"&gt;&lt;/div&gt;
+                &lt;div class="efin-carousel-content"&gt;
+                    &lt;div class="efin-carousel-info"&gt;
+                        &lt;span class="efin-carousel-type"&gt;&lt;/span&gt;
+                        &lt;h2 class="efin-carousel-title"&gt;&lt;/h2&gt;
+                        &lt;p class="efin-carousel-overview"&gt;&lt;/p&gt;
+                        &lt;div class="efin-carousel-buttons"&gt;
+                            &lt;button class="efin-btn-play" onclick="window.ElegantFinCarousel.playItem()"&gt;
+                                &lt;span class="material-icons"&gt;play_arrow&lt;/span&gt;
+                                Assistir
+                            &lt;/button&gt;
+                            &lt;button class="efin-btn-info" onclick="window.ElegantFinCarousel.openDetails()"&gt;
+                                &lt;span class="material-icons"&gt;info&lt;/span&gt;
+                                Mais Informacoes
+                            &lt;/button&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+                &lt;div class="efin-carousel-indicators"&gt;
+                    \${slides.map((_, index) => \`
+                        &lt;button class="efin-indicator \${index === 0 ? 'active' : ''}"
+                                onclick="window.ElegantFinCarousel.goToSlide(\${index})"&gt;
+                        &lt;/button&gt;
+                    \`).join('')}
+                &lt;/div&gt;
+                &lt;button class="efin-carousel-nav efin-nav-prev" onclick="window.ElegantFinCarousel.prevSlide()"&gt;
+                    &lt;span class="material-icons"&gt;chevron_left&lt;/span&gt;
+                &lt;/button&gt;
+                &lt;button class="efin-carousel-nav efin-nav-next" onclick="window.ElegantFinCarousel.nextSlide()"&gt;
+                    &lt;span class="material-icons"&gt;chevron_right&lt;/span&gt;
+                &lt;/button&gt;
+            &lt;/div&gt;
+        \`;
+
+        // Adiciona estilos
+        addStyles();
+
+        // Insere no inicio da pagina home
+        const homeSection = document.querySelector('.homePage .homeSectionsContainer') ||
+                           document.querySelector('.homePage') ||
+                           document.querySelector('#homeTab') ||
+                           document.querySelector('main');
+
+        if (homeSection) {
+            homeSection.insertBefore(carouselContainer, homeSection.firstChild);
+            updateSlideContent(0);
+        }
+    }
+
+    // Cria HTML de cada slide
+    function createSlideHTML(item, index) {
+        const backdropUrl = getBackdropUrl(item);
+        return \`
+            &lt;div class="efin-carousel-slide \${index === 0 ? 'active' : ''}"
+                 data-index="\${index}"
+                 style="background-image: url('\${backdropUrl}')"&gt;
+            &lt;/div&gt;
+        \`;
+    }
+
+    // Obtem URL do backdrop
+    function getBackdropUrl(item) {
+        const serverId = window.ApiClient.serverId();
+        const baseUrl = window.ApiClient.serverAddress();
+
+        // Tenta backdrop, depois primary
+        if (item.BackdropImageTags && item.BackdropImageTags.length > 0) {
+            return \`\${baseUrl}/Items/\${item.Id}/Images/Backdrop/0?quality=90&maxWidth=1920\`;
+        } else if (item.ImageTags && item.ImageTags.Primary) {
+            return \`\${baseUrl}/Items/\${item.Id}/Images/Primary?quality=90&maxWidth=1920\`;
+        }
+        return '';
+    }
+
+    // Atualiza conteudo do slide atual
+    function updateSlideContent(index) {
+        const item = slides[index];
+        if (!item) return;
+
+        const typeLabel = item.Type === 'Movie' ? 'FILME' : 'SERIE';
+        const overview = item.Overview ?
+            (item.Overview.length > 200 ? item.Overview.substring(0, 200) + '...' : item.Overview) :
+            '';
+
+        const typeEl = carouselContainer.querySelector('.efin-carousel-type');
+        const titleEl = carouselContainer.querySelector('.efin-carousel-title');
+        const overviewEl = carouselContainer.querySelector('.efin-carousel-overview');
+
+        if (typeEl) typeEl.textContent = typeLabel;
+        if (titleEl) titleEl.textContent = item.Name;
+        if (overviewEl) overviewEl.textContent = overview;
+    }
+
+    // Navega para slide especifico
+    function goToSlide(index) {
+        if (index < 0) index = slides.length - 1;
+        if (index >= slides.length) index = 0;
+
+        const slidesElements = carouselContainer.querySelectorAll('.efin-carousel-slide');
+        const indicators = carouselContainer.querySelectorAll('.efin-indicator');
+
+        slidesElements.forEach((slide, i) => {
+            slide.classList.toggle('active', i === index);
+        });
+
+        indicators.forEach((indicator, i) => {
+            indicator.classList.toggle('active', i === index);
+        });
+
+        currentSlide = index;
+        updateSlideContent(index);
+        resetAutoPlay();
+    }
+
+    // Proximo slide
+    function nextSlide() {
+        goToSlide(currentSlide + 1);
+    }
+
+    // Slide anterior
+    function prevSlide() {
+        goToSlide(currentSlide - 1);
+    }
+
+    // Reproduz o item atual
+    function playItem() {
+        const item = slides[currentSlide];
+        if (item) {
+            if (item.Type === 'Movie') {
+                window.location.hash = \`#!/details?id=\${item.Id}&autoplay=true\`;
+            } else {
+                // Para series, vai para a pagina de detalhes
+                window.location.hash = \`#!/details?id=\${item.Id}\`;
+            }
+        }
+    }
+
+    // Abre detalhes do item
+    function openDetails() {
+        const item = slides[currentSlide];
+        if (item) {
+            window.location.hash = \`#!/details?id=\${item.Id}\`;
+        }
+    }
+
+    // Inicia autoplay
+    function startAutoPlay() {
+        if (autoPlayInterval) clearInterval(autoPlayInterval);
+        autoPlayInterval = setInterval(nextSlide, CONFIG.interval);
+    }
+
+    // Reseta autoplay
+    function resetAutoPlay() {
+        startAutoPlay();
+    }
+
+    // Para autoplay
+    function stopAutoPlay() {
+        if (autoPlayInterval) {
+            clearInterval(autoPlayInterval);
+            autoPlayInterval = null;
+        }
+    }
+
+    // Adiciona estilos CSS (codigo completo no arquivo original)
+    function addStyles() {
+        if (document.getElementById('elegantfin-carousel-styles')) return;
+        // ... estilos CSS
+    }
+
+    // Expoe funcoes globalmente para os botoes onclick
+    window.ElegantFinCarousel = {
+        goToSlide,
+        nextSlide,
+        prevSlide,
+        playItem,
+        openDetails,
+        stopAutoPlay,
+        startAutoPlay
+    };
+
+    // Observa mudancas de pagina (SPA)
+    function setupPageObserver() {
+        let lastHash = window.location.hash;
+
+        const checkHash = () => {
+            const currentHash = window.location.hash;
+            if (currentHash !== lastHash) {
+                lastHash = currentHash;
+
+                if (currentHash.includes('home')) {
+                    setTimeout(init, 300);
+                } else {
+                    stopAutoPlay();
+                }
+            }
+        };
+
+        window.addEventListener('hashchange', checkHash);
+        setInterval(checkHash, 1000);
+    }
+
+    // Inicializa quando o DOM estiver pronto
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', () => {
+            init();
+            setupPageObserver();
+        });
+    } else {
+        init();
+        setupPageObserver();
+    }
+
+})();</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Netflix Mobile Experience -->
+            <article class="script-card" id="netflix-mobile">
+                <div class="script-header">
+                    <h2><span>📱</span> Netflix Mobile Experience</h2>
+                    <span class="script-badge">Mobile</span>
+                </div>
+                <div class="script-content">
+                    <p class="script-description">
+                        Transforma completamente a interface mobile do Jellyfin para uma experiencia identica a Netflix,
+                        com navegacao inferior, filtros de categoria, gestos touch e muito mais.
+                    </p>
+
+                    <h3 class="features-title">Funcionalidades</h3>
+                    <div class="features-grid">
+                        <div class="feature-item">Bottom Navigation Bar</div>
+                        <div class="feature-item">Filtros de Categoria</div>
+                        <div class="feature-item">Dropdown de Generos</div>
+                        <div class="feature-item">Quick Actions nos Cards</div>
+                        <div class="feature-item">Swipe para Voltar</div>
+                        <div class="feature-item">Pull to Refresh</div>
+                        <div class="feature-item">Cards estilo Portrait</div>
+                        <div class="feature-item">Header Otimizado</div>
+                    </div>
+
+                    <div class="config-section">
+                        <h3 class="config-title">Configuracoes Personalizaveis</h3>
+                        <table class="config-table">
+                            <thead>
+                                <tr>
+                                    <th>Variavel</th>
+                                    <th>Padrao</th>
+                                    <th>Descricao</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><code>enableBottomNav</code></td>
+                                    <td><code>true</code></td>
+                                    <td>Barra de navegacao inferior</td>
+                                </tr>
+                                <tr>
+                                    <td><code>enableCategoryFilters</code></td>
+                                    <td><code>true</code></td>
+                                    <td>Filtros de categoria no topo</td>
+                                </tr>
+                                <tr>
+                                    <td><code>enableQuickActions</code></td>
+                                    <td><code>true</code></td>
+                                    <td>Acoes rapidas nos cards</td>
+                                </tr>
+                                <tr>
+                                    <td><code>enableSwipeGestures</code></td>
+                                    <td><code>true</code></td>
+                                    <td>Gestos de swipe</td>
+                                </tr>
+                                <tr>
+                                    <td><code>enablePullToRefresh</code></td>
+                                    <td><code>true</code></td>
+                                    <td>Puxar para atualizar</td>
+                                </tr>
+                                <tr>
+                                    <td><code>hideOriginalNav</code></td>
+                                    <td><code>true</code></td>
+                                    <td>Esconde navegacao original</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <button class="expand-btn" onclick="toggleCode('mobile-code')">
+                        Ver Codigo Completo
+                    </button>
+
+                    <div id="mobile-code" class="collapsible-content">
+                        <div class="code-section">
+                            <div class="code-header">
+                                <span>netflix-mobile-experience.js</span>
+                                <button class="copy-btn" onclick="copyCode('mobile-experience-code')">Copiar Codigo</button>
+                            </div>
+                            <div class="code-block">
+                                <pre><code id="mobile-experience-code">/**
+ * ElegantFin - Netflix Mobile Experience
+ * Transforma a interface mobile do Jellyfin no estilo Netflix
+ * Para uso com Jellyfin JavaScript Injector
+ *
+ * Codigo completo disponivel em:
+ * https://github.com/TheusN/netflin/blob/main/Theme/assets/scripts/netflix-mobile-experience.js
+ */
+
+(function() {
+    'use strict';
+
+    // CONFIGURACOES
+    const CONFIG = {
+        enableBottomNav: true,          // Barra de navegacao inferior
+        enableCategoryFilters: true,    // Filtros de categoria no topo
+        enableQuickActions: true,       // Acoes rapidas nos cards
+        enableSwipeGestures: true,      // Gestos de swipe
+        enablePullToRefresh: true,      // Puxar para atualizar
+        enableFloatingProfile: true,    // Perfil flutuante no header
+        hideOriginalNav: true,          // Esconde navegacao original
+        cardStyle: 'portrait',          // 'portrait' ou 'landscape'
+    };
+
+    // DETECCAO MOBILE
+    function isMobile() {
+        return window.innerWidth <= 768 ||
+               /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+    }
+
+    // INICIALIZACAO
+    function init() {
+        if (!isMobile()) {
+            console.log('ElegantFin Mobile: Desktop detectado, algumas features desativadas');
+        }
+
+        addMobileStyles();
+
+        if (CONFIG.enableBottomNav) createBottomNav();
+        if (CONFIG.enableCategoryFilters) createCategoryFilters();
+        if (CONFIG.enableSwipeGestures) setupSwipeGestures();
+        if (CONFIG.enablePullToRefresh) setupPullToRefresh();
+        if (CONFIG.enableQuickActions) setupQuickActions();
+        if (CONFIG.enableFloatingProfile) enhanceHeader();
+
+        observePageChanges();
+    }
+
+    // BOTTOM NAVIGATION BAR (Estilo Netflix)
+    function createBottomNav() {
+        if (document.getElementById('efin-bottom-nav')) return;
+
+        const bottomNav = document.createElement('nav');
+        bottomNav.id = 'efin-bottom-nav';
+        bottomNav.innerHTML = \`
+            &lt;a href="#!/home.html" class="efin-nav-item" data-page="home"&gt;
+                &lt;span class="material-icons"&gt;home&lt;/span&gt;
+                &lt;span class="efin-nav-label"&gt;Inicio&lt;/span&gt;
+            &lt;/a&gt;
+            &lt;a href="#!/search.html" class="efin-nav-item" data-page="search"&gt;
+                &lt;span class="material-icons"&gt;search&lt;/span&gt;
+                &lt;span class="efin-nav-label"&gt;Buscar&lt;/span&gt;
+            &lt;/a&gt;
+            &lt;a href="#!/list.html?topParentId=new" class="efin-nav-item" data-page="new"&gt;
+                &lt;span class="material-icons"&gt;fiber_new&lt;/span&gt;
+                &lt;span class="efin-nav-label"&gt;Novidades&lt;/span&gt;
+            &lt;/a&gt;
+            &lt;a href="#!/mypreferencesmenu.html" class="efin-nav-item" data-page="downloads"&gt;
+                &lt;span class="material-icons"&gt;download&lt;/span&gt;
+                &lt;span class="efin-nav-label"&gt;Downloads&lt;/span&gt;
+            &lt;/a&gt;
+            &lt;a href="#!/mypreferencesmenu.html" class="efin-nav-item" data-page="profile"&gt;
+                &lt;span class="material-icons"&gt;person&lt;/span&gt;
+                &lt;span class="efin-nav-label"&gt;Perfil&lt;/span&gt;
+            &lt;/a&gt;
+        \`;
+
+        document.body.appendChild(bottomNav);
+        updateActiveNavItem();
+        // ... resto do codigo
+    }
+
+    // CATEGORY FILTERS (Estilo Netflix)
+    function createCategoryFilters() {
+        // Cria filtros: Todos, Filmes, Series, Continuar, Minha Lista, Generos
+        // ... codigo completo no arquivo original
+    }
+
+    // QUICK ACTIONS NOS CARDS
+    function setupQuickActions() {
+        // Adiciona botoes Play, Adicionar, Info nos cards
+        // ... codigo completo no arquivo original
+    }
+
+    // SWIPE GESTURES
+    function setupSwipeGestures() {
+        // Swipe direita para voltar
+        // ... codigo completo no arquivo original
+    }
+
+    // PULL TO REFRESH
+    function setupPullToRefresh() {
+        // Puxar para baixo para atualizar
+        // ... codigo completo no arquivo original
+    }
+
+    // ESTILOS CSS
+    function addMobileStyles() {
+        // Todos os estilos para bottom nav, filtros, cards, etc
+        // ... codigo completo no arquivo original
+    }
+
+    // INICIALIZACAO
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init);
+    } else {
+        init();
+    }
+
+    window.addEventListener('hashchange', () => {
+        setTimeout(init, 300);
+    });
+
+})();
+
+// CODIGO COMPLETO: ~800 linhas
+// Baixe o arquivo original para o codigo completo com todos os estilos CSS</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </div>
+
+    <footer>
+        <p>
+            <strong>Netflin</strong> - Fork do <a href="https://github.com/lscambo13/ElegantFin" target="_blank">ElegantFin</a>
+            | Mantido por <a href="https://github.com/TheusN" target="_blank">TheusN</a>
+        </p>
+        <p style="margin-top: 10px;">
+            <a href="https://github.com/TheusN/netflin" target="_blank">GitHub</a> |
+            <a href="https://github.com/TheusN/netflin/issues" target="_blank">Reportar Bug</a>
+        </p>
+    </footer>
+
+    <script>
+        function toggleCode(id) {
+            const content = document.getElementById(id);
+            const btn = content.previousElementSibling;
+
+            if (content.classList.contains('show')) {
+                content.classList.remove('show');
+                btn.textContent = 'Ver Codigo Completo';
+            } else {
+                content.classList.add('show');
+                btn.textContent = 'Ocultar Codigo';
+            }
+        }
+
+        function copyCode(id) {
+            const codeElement = document.getElementById(id);
+            const text = codeElement.textContent;
+
+            navigator.clipboard.writeText(text).then(() => {
+                const btn = codeElement.closest('.code-section').querySelector('.copy-btn');
+                btn.textContent = 'Copiado!';
+                btn.classList.add('copied');
+
+                setTimeout(() => {
+                    btn.textContent = 'Copiar Codigo';
+                    btn.classList.remove('copied');
+                }, 2000);
+            });
+        }
+    </script>
+</body>
+
+</html>
