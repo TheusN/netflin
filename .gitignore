@@ -1,2 +1,6 @@
 /tmp.txt
 /commits.csv
+
+# Claude Code
+.claude/
+CLAUDE.md
