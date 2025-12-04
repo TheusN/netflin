@@ -85,6 +85,7 @@ Para usar os scripts, você precisa instalar o plugin **[Jellyfin JavaScript Inj
 |--------|-----------|--------------|
 | **Banner Carousel** | Carrossel com os últimos filmes e séries adicionados, estilo Netflix | [Ver detalhes](docs/scripts.html#banner-carousel) |
 | **Netflix Mobile Experience** | Transforma a interface mobile no estilo Netflix com bottom nav, filtros e gestos | [Ver detalhes](docs/scripts.html#netflix-mobile) |
+| **Theme Switcher & Custom Logo** | Seletor de tema (Claro/Escuro/Sistema) e logo personalizada do Netfin | [Ver detalhes](docs/scripts.html#theme-switcher) |
 
 **Acesse a [página de scripts](docs/scripts.html) para ver o código completo e instruções de instalação.**
 
@@ -204,6 +205,20 @@ Verifique o número da versão na parte inferior da tela do Dashboard. Deve ser 
 Se o rodapé do Dashboard mostra uma versão antiga, limpe o cache:
 - **Web:** Force atualização com CTRL + F5
 - **Apps:** Faça logout e login novamente
+</details>
+
+<details>
+  <summary>Imagens de fundo não aparecem nas páginas de filmes/séries</summary>
+
+Se as imagens de backdrop não aparecem na página de detalhes, mas funcionam em aba anônima, é problema de **cache do navegador**:
+
+**Solução Rápida:**
+- **Web:** Pressione `Ctrl + Shift + Delete` e limpe "Imagens e arquivos em cache"
+- **Ou:** Pressione `Ctrl + F5` (hard refresh) na página
+- **Apps:** Limpe o cache do aplicativo nas configurações ou faça logout/login
+
+**Solução Automática:**
+- Use a versão Nightly do tema que já inclui fix automático para cache
 </details>
 
 <details>

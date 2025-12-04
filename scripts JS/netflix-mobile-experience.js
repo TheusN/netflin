@@ -16,7 +16,7 @@
         enableSwipeGestures: true,      // Gestos de swipe
         enablePullToRefresh: true,      // Puxar para atualizar
         hideOriginalNav: true,          // Esconde navegação original
-        cardStyle: 'portrait',          // 'portrait' ou 'landscape'
+        cardStyle: 'portrait',          // 'portrait' ou 'landscape' (por enquanto só visual, sem forçar ratio)
     };
 
     // ==========================================
@@ -27,12 +27,22 @@
                /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
     }
 
+    function isTablet() {
+        return /iPad/i.test(navigator.userAgent) ||
+               (navigator.userAgent.includes("Mac") && "ontouchend" in document);
+    }
+
     // ==========================================
     // INICIALIZAÇÃO
     // ==========================================
     function init() {
         if (!isMobile()) {
             console.log('ElegantFin Mobile: Desktop detectado, algumas features desativadas');
+        }
+
+        // Adiciona classe ao body se for tablet
+        if (isTablet()) {
+            document.body.classList.add('efin-tablet');
         }
 
         addMobileStyles();
@@ -46,7 +56,7 @@
     }
 
     // ==========================================
-    // BOTTOM NAVIGATION BAR (Estilo Netflix)
+    // BOTTOM NAVIGATION BAR (Estilo Netflix / Glass)
     // ==========================================
     function createBottomNav() {
         if (document.getElementById('efin-bottom-nav')) return;
@@ -66,9 +76,9 @@
                 <span class="material-icons">fiber_new</span>
                 <span class="efin-nav-label">Novidades</span>
             </a>
-            <a href="#!/mypreferencesmenu.html" class="efin-nav-item" data-page="downloads">
-                <span class="material-icons">download</span>
-                <span class="efin-nav-label">Downloads</span>
+            <a href="#!/list.html" class="efin-nav-item" data-page="mylist">
+                <span class="material-icons">playlist_play</span>
+                <span class="efin-nav-label">Minha Lista</span>
             </a>
             <a href="#!/mypreferencesmenu.html" class="efin-nav-item" data-page="profile">
                 <span class="material-icons">person</span>
@@ -79,13 +89,18 @@
         document.body.appendChild(bottomNav);
         updateActiveNavItem();
 
-        // Esconde navegação original no mobile
-        if (CONFIG.hideOriginalNav && isMobile()) {
+        // Esconde navegação original no mobile e tablets
+        if (CONFIG.hideOriginalNav && (isMobile() || isTablet())) {
             const style = document.createElement('style');
             style.textContent = `
                 @media (max-width: 768px) {
                     .headerTabs, .navMenuOption { display: none !important; }
                     .mainDrawer-scrollContainer { padding-bottom: 80px !important; }
+                }
+
+                body.efin-tablet .headerTabs,
+                body.efin-tablet .navMenuOption {
+                    display: none !important;
                 }
             `;
             document.head.appendChild(style);
@@ -93,17 +108,20 @@
     }
 
     function updateActiveNavItem() {
-        const hash = window.location.hash;
+        const hash = window.location.hash || '';
         const navItems = document.querySelectorAll('.efin-nav-item');
 
         navItems.forEach(item => {
             item.classList.remove('active');
             const page = item.dataset.page;
 
-            if ((page === 'home' && hash.includes('home')) ||
-                (page === 'search' && hash.includes('search')) ||
-                (page === 'new' && hash.includes('list')) ||
-                (page === 'profile' && hash.includes('preferences'))) {
+            const isHome   = page === 'home'    && hash.includes('home');
+            const isSearch = page === 'search'  && hash.includes('search');
+            const isNew    = page === 'new'     && hash.includes('list.html') && hash.includes('topParentId=new');
+            const isMyList = page === 'mylist'  && hash.includes('list.html') && !hash.includes('topParentId=new');
+            const isProfile= page === 'profile' && hash.includes('preferences');
+
+            if (isHome || isSearch || isNew || isMyList || isProfile) {
                 item.classList.add('active');
             }
         });
@@ -192,7 +210,7 @@
                     section.style.display = title.includes('continuar') || title.includes('continue') ? '' : 'none';
                     break;
                 case 'mylist':
-                    // Navega para a lista
+                    // Navega para a lista padrão (Minha Lista)
                     window.location.hash = '#!/list.html';
                     break;
                 case 'genres':
@@ -243,7 +261,11 @@
     // ==========================================
     // SWIPE GESTURES
     // ==========================================
+    let swipeGesturesInitialized = false;
     function setupSwipeGestures() {
+        if (swipeGesturesInitialized) return;
+        swipeGesturesInitialized = true;
+
         let touchStartX = 0;
         let touchStartY = 0;
         let touchEndX = 0;
@@ -280,14 +302,21 @@
     // ==========================================
     // PULL TO REFRESH
     // ==========================================
+    let pullToRefreshInitialized = false;
     function setupPullToRefresh() {
+        if (pullToRefreshInitialized) return;
+        pullToRefreshInitialized = true;
+
         let touchStartY = 0;
         let isPulling = false;
 
-        const indicator = document.createElement('div');
-        indicator.id = 'efin-pull-indicator';
-        indicator.innerHTML = '<span class="material-icons">refresh</span>';
-        document.body.appendChild(indicator);
+        let indicator = document.getElementById('efin-pull-indicator');
+        if (!indicator) {
+            indicator = document.createElement('div');
+            indicator.id = 'efin-pull-indicator';
+            indicator.innerHTML = '<span class="material-icons">refresh</span>';
+            document.body.appendChild(indicator);
+        }
 
         document.addEventListener('touchstart', (e) => {
             if (window.scrollY === 0) {
@@ -312,7 +341,8 @@
         document.addEventListener('touchend', () => {
             if (!isPulling) return;
 
-            const indicatorY = parseFloat(indicator.style.transform.match(/translateY\(([^)]+)\)/)?.[1] || 0);
+            const match = indicator.style.transform.match(/translateY\(([^)]+)\)/);
+            const indicatorY = parseFloat(match ? match[1] : '0');
 
             if (indicatorY > 50) {
                 indicator.classList.add('refreshing');
@@ -323,6 +353,7 @@
 
             indicator.style.transform = 'translateX(-50%) translateY(-50px)';
             indicator.style.opacity = '0';
+            indicator.classList.remove('refreshing');
             isPulling = false;
         }, { passive: true });
     }
@@ -330,7 +361,11 @@
     // ==========================================
     // OBSERVER DE MUDANÇA DE PÁGINA
     // ==========================================
+    let hashObserverInitialized = false;
     function observePageChanges() {
+        if (hashObserverInitialized) return;
+        hashObserverInitialized = true;
+
         window.addEventListener('hashchange', () => {
             updateActiveNavItem();
 
@@ -354,42 +389,49 @@
         const styles = document.createElement('style');
         styles.id = 'efin-mobile-styles';
         styles.textContent = `
-            /* ========== BOTTOM NAVIGATION ========== */
+            /* ========== BOTTOM NAVIGATION (GLASS) ========== */
             #efin-bottom-nav {
                 position: fixed;
-                bottom: 0;
-                left: 0;
-                right: 0;
-                height: 65px;
-                background: linear-gradient(to top, rgba(0,0,0,0.98), rgba(0,0,0,0.9));
+                bottom: 16px;
+                left: 16px;
+                right: 16px;
+                height: 62px;
+                background: rgba(15,15,15,0.78);
                 display: flex;
-                justify-content: space-around;
+                justify-content: space-between;
                 align-items: center;
                 z-index: 9999;
-                padding-bottom: env(safe-area-inset-bottom);
-                backdrop-filter: blur(10px);
-                border-top: 1px solid rgba(255,255,255,0.1);
+                padding: 8px 12px calc(8px + env(safe-area-inset-bottom));
+                backdrop-filter: blur(22px);
+                -webkit-backdrop-filter: blur(22px);
+                border-radius: 999px;
+                border: 1px solid rgba(255,255,255,0.08);
+                box-shadow: 0 18px 35px rgba(0,0,0,0.6);
             }
 
             .efin-nav-item {
                 display: flex;
                 flex-direction: column;
                 align-items: center;
+                justify-content: center;
                 text-decoration: none;
                 color: rgba(255,255,255,0.6);
-                font-size: 0.7em;
+                font-size: 0.68em;
                 transition: all 0.2s ease;
-                padding: 8px 12px;
-                border-radius: 8px;
+                padding: 4px 6px;
+                border-radius: 999px;
+                flex: 1;
+                min-width: 0;
             }
 
             .efin-nav-item .material-icons {
-                font-size: 1.8em;
+                font-size: 1.6em;
                 margin-bottom: 2px;
             }
 
             .efin-nav-item.active {
-                color: white;
+                color: #ffffff;
+                background: rgba(255,255,255,0.10);
             }
 
             .efin-nav-item.active .material-icons {
@@ -398,18 +440,29 @@
 
             .efin-nav-label {
                 font-weight: 500;
+                white-space: nowrap;
             }
 
-            /* Espaço para bottom nav */
+            /* Espaço para bottom nav flutuante */
             @media (max-width: 768px) {
                 body {
-                    padding-bottom: 75px !important;
+                    padding-bottom: 110px !important;
                 }
                 .mainDrawer-scrollContainer,
                 .view,
                 .page {
-                    padding-bottom: 80px !important;
+                    padding-bottom: 110px !important;
                 }
+            }
+
+            /* Espaço para bottom nav em tablets */
+            body.efin-tablet {
+                padding-bottom: 110px !important;
+            }
+            body.efin-tablet .mainDrawer-scrollContainer,
+            body.efin-tablet .view,
+            body.efin-tablet .page {
+                padding-bottom: 110px !important;
             }
 
             /* ========== CATEGORY FILTERS ========== */
@@ -539,15 +592,12 @@
                 to { transform: rotate(360deg); }
             }
 
-            /* ========== CARDS ESTILO PORTRAIT (NETFLIX) ========== */
+            /* ========== CARDS ESTILO NETFLIX (sem bug de ratio) ========== */
             @media (max-width: 768px) {
+                /* Não forçar mais aspect ratio — evita bug no "Continuar Assistindo" */
                 .cardImageContainer {
-                    padding-bottom: 150% !important; /* Aspect ratio portrait */
-                }
-
-                .card {
-                    width: 110px !important;
-                    min-width: 110px !important;
+                    border-radius: 6px !important;
+                    overflow: hidden !important;
                 }
 
                 .cardText,
@@ -565,7 +615,7 @@
                     scroll-snap-align: start;
                 }
 
-                /* Remove espaço extra */
+                /* Remover espaçamento extra entre sessões */
                 .section0, .section1, .verticalSection {
                     padding: 0 !important;
                     margin-bottom: 25px !important;
@@ -603,7 +653,7 @@
                 }
             }
 
-            /* ========== DESKTOP - ESCONDE BOTTOM NAV ========== */
+            /* ========== DESKTOP - ESCONDE BOTTOM NAV E FILTROS ========== */
             @media (min-width: 769px) {
                 #efin-bottom-nav {
                     display: none;
@@ -611,6 +661,15 @@
 
                 #efin-category-filters {
                     display: none;
+                }
+
+                /* Força exibição em tablets (iPad) */
+                body.efin-tablet #efin-bottom-nav {
+                    display: flex !important;
+                }
+
+                body.efin-tablet #efin-category-filters {
+                    display: block !important;
                 }
             }
         `;
@@ -626,10 +685,5 @@
     } else {
         init();
     }
-
-    // Re-inicializa em mudanças de página (SPA)
-    window.addEventListener('hashchange', () => {
-        setTimeout(init, 300);
-    });
 
 })();

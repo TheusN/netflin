@@ -3806,3 +3806,49 @@ ul.MuiList-root.MuiMenu-list.MuiList-dense>div:first-child {
 .layout-tv .show-animation:focus {
     transform: none !important;
 }
+
+/* ========================================
+   Tradução PT-BR - Login Page
+   ======================================== */
+
+/* Traduz "Sign in to continue" para "Entre para continuar" */
+.loginDisclaimer {
+    font-size: 0 !important;
+}
+
+.loginDisclaimer::before {
+    content: "Entre para continuar";
+    font-size: 1.5rem;
+    display: block;
+}
+
+/* ========================================
+   Fix para Cache de Imagens de Fundo
+   ======================================== */
+
+/* Force o navegador a recarregar as imagens de backdrop corretamente */
+.itemBackdrop,
+.detailImageContainer,
+.backdropImage,
+[class*="backdrop"] {
+    background-size: cover !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    will-change: background-image;
+}
+
+/* Força reflow do backdrop quando carrega */
+.itemBackdrop-in {
+    animation: backdropFadeIn 0.3s ease-in;
+}
+
+@keyframes backdropFadeIn {
+    from {
+        opacity: 0;
+        transform: scale(1.05);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
