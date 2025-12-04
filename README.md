@@ -1,7 +1,10 @@
 <!-- Banner Image -->
-<img src="https://github.com/lscambo13/ElegantFin/blob/main/Theme/assets/img/banner.png?raw=true" alt="ElegantFin Theme for Jellyfin - Banner">
+<picture>
+  <source srcset="https://cdn.jsdelivr.net/gh/TheusN/netfin@main/temas/assets/img/logo-netfin-branca.png" media="(prefers-color-scheme: dark)">
+  <img src="https://cdn.jsdelivr.net/gh/TheusN/netfin@main/temas/assets/img/logo-netfin-vermelha.png" alt="Netfin - Tema ElegantFin para Jellyfin">
+</picture>
 
-# Netflin - Tema ElegantFin para Jellyfin
+# Netfin - Tema ElegantFin para Jellyfin
 
 Um tema moderno e elegante para Jellyfin inspirado no Jellyseerr. Oferece uma experiência visual aprimorada com correções de UI/UX, proporcionando ao Jellyfin uma aparência fresca e moderna que funciona perfeitamente em dispositivos móveis, desktop e TV.
 
@@ -26,7 +29,7 @@ Um tema moderno e elegante para Jellyfin inspirado no Jellyseerr. Oferece uma ex
 **Cole o seguinte código na caixa de Custom CSS:**
 
 ```css
-@import url("https://cdn.jsdelivr.net/gh/TheusN/netflin@main/temas/ElegantFin-jellyfin-theme-build-latest-minified.css");
+@import url("https://cdn.jsdelivr.net/gh/TheusN/netfin@main/temas/ElegantFin-jellyfin-theme-build-latest-minified.css");
 ```
 
 <details>
@@ -52,12 +55,12 @@ Um tema moderno e elegante para Jellyfin inspirado no Jellyseerr. Oferece uma ex
 
 **jsDelivr CDN (Recomendado - Mais Rápido):**
 ```css
-@import url("https://cdn.jsdelivr.net/gh/TheusN/netflin@main/temas/ElegantFin-jellyfin-theme-build-latest-minified.css");
+@import url("https://cdn.jsdelivr.net/gh/TheusN/netfin@main/temas/ElegantFin-jellyfin-theme-build-latest-minified.css");
 ```
 
 **Versão Nightly (em desenvolvimento):**
 ```css
-@import url("https://cdn.jsdelivr.net/gh/TheusN/netflin@main/temas/ElegantFin-theme-nightly.css");
+@import url("https://cdn.jsdelivr.net/gh/TheusN/netfin@main/temas/ElegantFin-theme-nightly.css");
 ```
 
 ---
@@ -158,7 +161,7 @@ Para usar os scripts, você precisa instalar o plugin **[Jellyfin JavaScript Inj
 
 - O ElegantFin não suporta plugins por padrão, então para adicionar suporte externo para [este plugin](https://github.com/IAmParadox27/jellyfin-plugin-media-bar), copie e cole o seguinte código no final da caixa Custom CSS, clique em salvar e atualize seu app/página:
 ```css
-@import url("https://cdn.jsdelivr.net/gh/TheusN/netflin@main/temas/assets/add-ons/media-bar-plugin-support-latest-min.css");
+@import url("https://cdn.jsdelivr.net/gh/TheusN/netfin@main/temas/assets/add-ons/media-bar-plugin-support-latest-min.css");
 ```
 - Para desfazer esta alteração, simplesmente remova este bloco de código
 </details>
@@ -226,6 +229,6 @@ GPL-2.0 License - Use livremente!
 
 **Desenvolvido com amor para a comunidade Jellyfin**
 
-[ElegantFin Original](https://github.com/lscambo13/ElegantFin) | [Reportar Bug](https://github.com/TheusN/netflin/issues) | [Sugerir Feature](https://github.com/TheusN/netflin/issues)
+[ElegantFin Original](https://github.com/lscambo13/ElegantFin) | [Reportar Bug](https://github.com/TheusN/netfin/issues) | [Sugerir Feature](https://github.com/TheusN/netfin/issues)
 
 </div>

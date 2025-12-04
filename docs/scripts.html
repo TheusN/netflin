@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Scripts JavaScript - Netflin/ElegantFin</title>
+    <title>Scripts JavaScript - Netfin/ElegantFin</title>
     <style>
         :root {
             --bg-color: #0d0d0d;
@@ -56,10 +56,14 @@
         }
 
         .logo {
-            font-size: 2em;
-            font-weight: 700;
-            color: var(--accent-color);
+            display: flex;
+            align-items: center;
             text-decoration: none;
+        }
+
+        .logo img {
+            height: 50px;
+            width: auto;
         }
 
         .nav-links {
@@ -408,11 +412,13 @@
 <body>
     <header>
         <div class="header-content">
-            <a href="index.html" class="logo">NETFLIN</a>
+            <a href="index.html" class="logo">
+                <img src="https://cdn.jsdelivr.net/gh/TheusN/netfin@main/temas/assets/img/logo-netfin-branca.png" alt="Netfin">
+            </a>
             <nav class="nav-links">
                 <a href="index.html">Tema CSS</a>
                 <a href="scripts.html">Scripts JS</a>
-                <a href="https://github.com/TheusN/netflin">GitHub</a>
+                <a href="https://github.com/TheusN/netfin">GitHub</a>
             </nav>
         </div>
     </header>
@@ -922,7 +928,7 @@
  * Para uso com Jellyfin JavaScript Injector
  *
  * Codigo completo disponivel em:
- * https://github.com/TheusN/netflin/blob/main/Theme/assets/scripts/netflix-mobile-experience.js
+ * https://github.com/TheusN/netfin/blob/main/Theme/assets/scripts/netflix-mobile-experience.js
  */
 
 (function() {
@@ -1053,12 +1059,12 @@
 
     <footer>
         <p>
-            <strong>Netflin</strong> - Fork do <a href="https://github.com/lscambo13/ElegantFin" target="_blank">ElegantFin</a>
+            <strong>Netfin</strong> - Fork do <a href="https://github.com/lscambo13/ElegantFin" target="_blank">ElegantFin</a>
             | Mantido por <a href="https://github.com/TheusN" target="_blank">TheusN</a>
         </p>
         <p style="margin-top: 10px;">
-            <a href="https://github.com/TheusN/netflin" target="_blank">GitHub</a> |
-            <a href="https://github.com/TheusN/netflin/issues" target="_blank">Reportar Bug</a>
+            <a href="https://github.com/TheusN/netfin" target="_blank">GitHub</a> |
+            <a href="https://github.com/TheusN/netfin/issues" target="_blank">Reportar Bug</a>
         </p>
     </footer>
 
