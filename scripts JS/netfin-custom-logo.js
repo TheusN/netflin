@@ -18,44 +18,113 @@
     // SUBSTITUIÇÃO DE LOGO
     // ==========================================
     function replaceJellyfinLogo() {
-        // Seletores da logo do Jellyfin
-        const logoSelectors = [
-            '.headerLogo',
-            '.pageTitleWithLogo',
-            'a[href="#!/home.html"] img',
-            '.imgLogoIcon',
-            'img[src*="web/assets/img/banner-light"]',
-            'img[src*="web/assets/img/icon"]'
-        ];
-
         const replaceLogos = () => {
-            logoSelectors.forEach(selector => {
-                const logos = document.querySelectorAll(selector);
-                logos.forEach(logo => {
-                    if (logo && !logo.classList.contains('netfin-custom-logo')) {
-                        logo.classList.add('netfin-custom-logo');
-                        logo.src = CONFIG.logoUrl;
-                        logo.alt = 'Netfin';
+            // Busca todos os elementos img na página
+            const allImages = document.querySelectorAll('img');
 
-                        // Ajusta estilo para garantir visibilidade
-                        logo.style.height = 'auto';
-                        logo.style.maxHeight = '40px';
-                        logo.style.width = 'auto';
-                        logo.style.objectFit = 'contain';
+            allImages.forEach(img => {
+                // Verifica se é uma logo do Jellyfin (src contém banner, icon ou logo)
+                const src = img.src || '';
+                const isJellyfinLogo =
+                    src.includes('banner') ||
+                    src.includes('icon') ||
+                    src.includes('logo') ||
+                    img.classList.contains('headerLogo') ||
+                    img.classList.contains('pageTitleWithLogo') ||
+                    img.classList.contains('imgLogoIcon');
+
+                // Se for logo do Jellyfin e ainda não foi substituída
+                if (isJellyfinLogo && !img.classList.contains('netfin-custom-logo')) {
+                    console.log('🔄 Substituindo logo do Jellyfin:', src);
+                    img.classList.add('netfin-custom-logo');
+                    img.src = CONFIG.logoUrl;
+                    img.alt = 'Netfin';
+
+                    // Força estilos inline para garantir visibilidade
+                    img.style.cssText = `
+                        height: auto !important;
+                        max-height: 40px !important;
+                        width: auto !important;
+                        object-fit: contain !important;
+                        display: inline-block !important;
+                        visibility: visible !important;
+                        opacity: 1 !important;
+                    `;
+
+                    console.log('✅ Logo substituída com sucesso!');
+                }
+            });
+
+            // Também busca por elementos com classes específicas
+            const specificSelectors = [
+                '.headerLogo',
+                '.pageTitleWithLogo',
+                '.imgLogoIcon',
+                'a[href*="home"] img',
+                '.skinHeader img'
+            ];
+
+            specificSelectors.forEach(selector => {
+                const elements = document.querySelectorAll(selector);
+                elements.forEach(el => {
+                    if (el && !el.classList.contains('netfin-custom-logo')) {
+                        console.log('🔄 Substituindo logo via seletor:', selector);
+                        el.classList.add('netfin-custom-logo');
+                        el.src = CONFIG.logoUrl;
+                        el.alt = 'Netfin';
+                        el.style.cssText = `
+                            height: auto !important;
+                            max-height: 40px !important;
+                            width: auto !important;
+                            object-fit: contain !important;
+                            display: inline-block !important;
+                            visibility: visible !important;
+                            opacity: 1 !important;
+                        `;
+                        console.log('✅ Logo substituída com sucesso via seletor!');
                     }
                 });
             });
         };
 
-        // Executa imediatamente e observa mudanças no DOM
+        // Executa imediatamente
+        console.log('🚀 Netfin Custom Logo: Iniciando substituição...');
         replaceLogos();
 
-        // Executa novamente após 1 segundo (para casos de carregamento tardio)
-        setTimeout(replaceLogos, 1000);
-        setTimeout(replaceLogos, 2000);
+        // Executa novamente após delays (para elementos carregados dinamicamente)
+        setTimeout(() => {
+            console.log('⏱️ Tentativa após 500ms...');
+            replaceLogos();
+        }, 500);
 
-        const observer = new MutationObserver(replaceLogos);
-        observer.observe(document.body, { childList: true, subtree: true });
+        setTimeout(() => {
+            console.log('⏱️ Tentativa após 1000ms...');
+            replaceLogos();
+        }, 1000);
+
+        setTimeout(() => {
+            console.log('⏱️ Tentativa após 2000ms...');
+            replaceLogos();
+        }, 2000);
+
+        setTimeout(() => {
+            console.log('⏱️ Tentativa após 3000ms...');
+            replaceLogos();
+        }, 3000);
+
+        // Observer para mudanças no DOM
+        const observer = new MutationObserver(() => {
+            replaceLogos();
+        });
+
+        observer.observe(document.body, {
+            childList: true,
+            subtree: true,
+            attributes: true,
+            attributeFilter: ['src']
+        });
+
+        console.log('👀 Observer ativo - monitorando mudanças no DOM...');
     }
 
     // ==========================================
