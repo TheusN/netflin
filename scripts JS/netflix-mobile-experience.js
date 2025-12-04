@@ -13,10 +13,8 @@
     const CONFIG = {
         enableBottomNav: true,          // Barra de navegação inferior
         enableCategoryFilters: true,    // Filtros de categoria no topo
-        enableQuickActions: true,       // Ações rápidas nos cards
         enableSwipeGestures: true,      // Gestos de swipe
         enablePullToRefresh: true,      // Puxar para atualizar
-        enableFloatingProfile: true,    // Perfil flutuante no header
         hideOriginalNav: true,          // Esconde navegação original
         cardStyle: 'portrait',          // 'portrait' ou 'landscape'
     };
@@ -43,8 +41,6 @@
         if (CONFIG.enableCategoryFilters) createCategoryFilters();
         if (CONFIG.enableSwipeGestures) setupSwipeGestures();
         if (CONFIG.enablePullToRefresh) setupPullToRefresh();
-        if (CONFIG.enableQuickActions) setupQuickActions();
-        if (CONFIG.enableFloatingProfile) enhanceHeader();
 
         observePageChanges();
     }
@@ -245,71 +241,6 @@
     }
 
     // ==========================================
-    // QUICK ACTIONS NOS CARDS
-    // ==========================================
-    function setupQuickActions() {
-        const observer = new MutationObserver(() => {
-            const cards = document.querySelectorAll('.card:not(.efin-enhanced)');
-
-            cards.forEach(card => {
-                card.classList.add('efin-enhanced');
-
-                // Adiciona botões de ação rápida
-                const cardBox = card.querySelector('.cardBox') || card;
-
-                if (!card.querySelector('.efin-quick-actions')) {
-                    const actions = document.createElement('div');
-                    actions.className = 'efin-quick-actions';
-                    actions.innerHTML = `
-                        <button class="efin-action-btn efin-action-play" title="Reproduzir">
-                            <span class="material-icons">play_arrow</span>
-                        </button>
-                        <button class="efin-action-btn efin-action-add" title="Minha Lista">
-                            <span class="material-icons">add</span>
-                        </button>
-                        <button class="efin-action-btn efin-action-info" title="Mais Info">
-                            <span class="material-icons">info</span>
-                        </button>
-                    `;
-
-                    cardBox.appendChild(actions);
-
-                    // Event listeners
-                    const playBtn = actions.querySelector('.efin-action-play');
-                    const addBtn = actions.querySelector('.efin-action-add');
-                    const infoBtn = actions.querySelector('.efin-action-info');
-
-                    playBtn?.addEventListener('click', (e) => {
-                        e.preventDefault();
-                        e.stopPropagation();
-                        const itemId = card.dataset.id || card.querySelector('a')?.href?.match(/id=([^&]+)/)?.[1];
-                        if (itemId) {
-                            window.location.hash = `#!/details?id=${itemId}&autoplay=true`;
-                        }
-                    });
-
-                    addBtn?.addEventListener('click', (e) => {
-                        e.preventDefault();
-                        e.stopPropagation();
-                        // Toggle na lista
-                        addBtn.querySelector('.material-icons').textContent =
-                            addBtn.querySelector('.material-icons').textContent === 'add' ? 'check' : 'add';
-                    });
-
-                    infoBtn?.addEventListener('click', (e) => {
-                        e.preventDefault();
-                        e.stopPropagation();
-                        const link = card.querySelector('a')?.href;
-                        if (link) window.location.href = link;
-                    });
-                }
-            });
-        });
-
-        observer.observe(document.body, { childList: true, subtree: true });
-    }
-
-    // ==========================================
     // SWIPE GESTURES
     // ==========================================
     function setupSwipeGestures() {
@@ -394,42 +325,6 @@
             indicator.style.opacity = '0';
             isPulling = false;
         }, { passive: true });
-    }
-
-    // ==========================================
-    // ENHANCED HEADER
-    // ==========================================
-    function enhanceHeader() {
-        const checkHeader = setInterval(() => {
-            const header = document.querySelector('.skinHeader');
-            if (!header || header.classList.contains('efin-enhanced-header')) {
-                if (!header) return;
-                clearInterval(checkHeader);
-                return;
-            }
-            clearInterval(checkHeader);
-
-            header.classList.add('efin-enhanced-header');
-
-            // Adiciona logo e perfil ao header
-            const headerContent = document.createElement('div');
-            headerContent.className = 'efin-header-content';
-            headerContent.innerHTML = `
-                <div class="efin-header-logo">
-                    <span style="font-weight: 700; font-size: 1.4em; color: var(--activeColor, #e50914);">N</span>
-                </div>
-                <div class="efin-header-actions">
-                    <button class="efin-header-btn" onclick="window.location.hash='#!/search.html'">
-                        <span class="material-icons">search</span>
-                    </button>
-                    <button class="efin-header-btn efin-profile-btn">
-                        <span class="material-icons">account_circle</span>
-                    </button>
-                </div>
-            `;
-
-            header.insertBefore(headerContent, header.firstChild);
-        }, 500);
     }
 
     // ==========================================
@@ -612,76 +507,6 @@
                 }
             }
 
-            /* ========== QUICK ACTIONS NOS CARDS ========== */
-            .card .cardBox {
-                position: relative;
-            }
-
-            .efin-quick-actions {
-                position: absolute;
-                bottom: 0;
-                left: 0;
-                right: 0;
-                display: flex;
-                justify-content: center;
-                gap: 8px;
-                padding: 10px;
-                background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
-                opacity: 0;
-                transform: translateY(10px);
-                transition: all 0.3s ease;
-            }
-
-            .card:hover .efin-quick-actions,
-            .card:focus-within .efin-quick-actions {
-                opacity: 1;
-                transform: translateY(0);
-            }
-
-            /* Sempre visível no mobile (touch) */
-            @media (max-width: 768px) {
-                .efin-quick-actions {
-                    opacity: 1;
-                    transform: translateY(0);
-                    padding: 8px 5px;
-                    background: linear-gradient(to top, rgba(0,0,0,0.95) 50%, transparent);
-                }
-            }
-
-            .efin-action-btn {
-                width: 36px;
-                height: 36px;
-                border-radius: 50%;
-                border: 2px solid rgba(255,255,255,0.7);
-                background: rgba(0,0,0,0.6);
-                color: white;
-                cursor: pointer;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                transition: all 0.2s ease;
-            }
-
-            .efin-action-btn:hover {
-                transform: scale(1.15);
-                border-color: white;
-                background: rgba(255,255,255,0.2);
-            }
-
-            .efin-action-btn .material-icons {
-                font-size: 1.2em;
-            }
-
-            .efin-action-play {
-                background: white;
-                border-color: white;
-                color: black;
-            }
-
-            .efin-action-play:hover {
-                background: rgba(255,255,255,0.9);
-            }
-
             /* ========== PULL TO REFRESH ========== */
             #efin-pull-indicator {
                 position: fixed;
@@ -712,42 +537,6 @@
             @keyframes spin {
                 from { transform: rotate(0deg); }
                 to { transform: rotate(360deg); }
-            }
-
-            /* ========== ENHANCED HEADER ========== */
-            .efin-header-content {
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                width: 100%;
-                padding: 0 15px;
-            }
-
-            .efin-header-logo {
-                font-size: 1.5em;
-            }
-
-            .efin-header-actions {
-                display: flex;
-                gap: 10px;
-            }
-
-            .efin-header-btn {
-                background: transparent;
-                border: none;
-                color: white;
-                padding: 8px;
-                cursor: pointer;
-                border-radius: 50%;
-                transition: background 0.2s ease;
-            }
-
-            .efin-header-btn:hover {
-                background: rgba(255,255,255,0.1);
-            }
-
-            .efin-header-btn .material-icons {
-                font-size: 1.5em;
             }
 
             /* ========== CARDS ESTILO PORTRAIT (NETFLIX) ========== */

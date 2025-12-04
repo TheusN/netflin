@@ -26,7 +26,7 @@ Um tema moderno e elegante para Jellyfin inspirado no Jellyseerr. Oferece uma ex
 **Cole o seguinte código na caixa de Custom CSS:**
 
 ```css
-@import url("https://cdn.jsdelivr.net/gh/TheusN/netflin@main/Theme/ElegantFin-jellyfin-theme-build-latest-minified.css");
+@import url("https://cdn.jsdelivr.net/gh/TheusN/netflin@main/temas/ElegantFin-jellyfin-theme-build-latest-minified.css");
 ```
 
 <details>
@@ -52,12 +52,12 @@ Um tema moderno e elegante para Jellyfin inspirado no Jellyseerr. Oferece uma ex
 
 **jsDelivr CDN (Recomendado - Mais Rápido):**
 ```css
-@import url("https://cdn.jsdelivr.net/gh/TheusN/netflin@main/Theme/ElegantFin-jellyfin-theme-build-latest-minified.css");
+@import url("https://cdn.jsdelivr.net/gh/TheusN/netflin@main/temas/ElegantFin-jellyfin-theme-build-latest-minified.css");
 ```
 
 **Versão Nightly (em desenvolvimento):**
 ```css
-@import url("https://cdn.jsdelivr.net/gh/TheusN/netflin@main/Theme/ElegantFin-theme-nightly.css");
+@import url("https://cdn.jsdelivr.net/gh/TheusN/netflin@main/temas/ElegantFin-theme-nightly.css");
 ```
 
 ---
@@ -158,7 +158,7 @@ Para usar os scripts, você precisa instalar o plugin **[Jellyfin JavaScript Inj
 
 - O ElegantFin não suporta plugins por padrão, então para adicionar suporte externo para [este plugin](https://github.com/IAmParadox27/jellyfin-plugin-media-bar), copie e cole o seguinte código no final da caixa Custom CSS, clique em salvar e atualize seu app/página:
 ```css
-@import url("https://cdn.jsdelivr.net/gh/TheusN/netflin@main/Theme/assets/add-ons/media-bar-plugin-support-latest-min.css");
+@import url("https://cdn.jsdelivr.net/gh/TheusN/netflin@main/temas/assets/add-ons/media-bar-plugin-support-latest-min.css");
 ```
 - Para desfazer esta alteração, simplesmente remova este bloco de código
 </details>
