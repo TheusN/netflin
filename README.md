@@ -85,7 +85,7 @@ Para usar os scripts, você precisa instalar o plugin **[Jellyfin JavaScript Inj
 |--------|-----------|--------------|
 | **Banner Carousel** | Carrossel com os últimos filmes e séries adicionados, estilo Netflix | [Ver detalhes](docs/scripts.html#banner-carousel) |
 | **Netflix Mobile Experience** | Transforma a interface mobile no estilo Netflix com bottom nav, filtros e gestos | [Ver detalhes](docs/scripts.html#netflix-mobile) |
-| **Theme Switcher & Custom Logo** | Seletor de tema (Claro/Escuro/Sistema) e logo personalizada do Netfin | [Ver detalhes](docs/scripts.html#theme-switcher) |
+| **Custom Logo** | Substitui a logo do Jellyfin pela logo do Netfin (branca) | [Ver detalhes](docs/scripts.html#custom-logo) |
 
 **Acesse a [página de scripts](docs/scripts.html) para ver o código completo e instruções de instalação.**
 

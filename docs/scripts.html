@@ -1055,60 +1055,42 @@
                 </div>
             </article>
 
-            <!-- Theme Switcher & Custom Logo -->
-            <article class="script-card" id="theme-switcher">
+            <!-- Custom Logo -->
+            <article class="script-card" id="custom-logo">
                 <div class="script-header">
-                    <h2><span>🎨</span> Theme Switcher & Custom Logo</h2>
+                    <h2><span>🎨</span> Custom Logo</h2>
                     <span class="script-badge">Todos os Dispositivos</span>
                 </div>
                 <div class="script-content">
                     <p class="script-description">
-                        Adiciona seletor de tema (Claro/Escuro/Sistema) no canto superior direito e substitui a logo do Jellyfin
-                        pela logo do Netfin que muda de cor automaticamente conforme o tema ativo.
+                        Substitui automaticamente a logo do Jellyfin pela logo do Netfin (branca) em todas as páginas.
                     </p>
 
                     <h3 class="features-title">Funcionalidades</h3>
                     <div class="features-grid">
-                        <div class="feature-item">Modo Claro</div>
-                        <div class="feature-item">Modo Escuro</div>
-                        <div class="feature-item">Modo Sistema</div>
                         <div class="feature-item">Logo Personalizada</div>
-                        <div class="feature-item">Logo Adaptativa</div>
-                        <div class="feature-item">Salva Preferencia</div>
-                        <div class="feature-item">Menu Flutuante</div>
+                        <div class="feature-item">Substituição Automática</div>
+                        <div class="feature-item">Observer de DOM</div>
+                        <div class="feature-item">Múltiplos Seletores</div>
+                        <div class="feature-item">Sem Configuração</div>
                         <div class="feature-item">100% Responsivo</div>
                     </div>
 
                     <div class="config-section">
-                        <h3 class="config-title">Configuracoes Personalizaveis</h3>
+                        <h3 class="config-title">Configuracoes</h3>
                         <table class="config-table">
                             <thead>
                                 <tr>
                                     <th>Variavel</th>
-                                    <th>Padrao</th>
+                                    <th>Valor</th>
                                     <th>Descricao</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td><code>enableThemeSwitcher</code></td>
-                                    <td><code>true</code></td>
-                                    <td>Ativa seletor de tema</td>
-                                </tr>
-                                <tr>
-                                    <td><code>enableCustomLogo</code></td>
-                                    <td><code>true</code></td>
-                                    <td>Substitui logo do Jellyfin</td>
-                                </tr>
-                                <tr>
-                                    <td><code>logoLight</code></td>
-                                    <td><code>URL da logo vermelha</code></td>
-                                    <td>Logo para tema claro</td>
-                                </tr>
-                                <tr>
-                                    <td><code>logoDark</code></td>
+                                    <td><code>logoUrl</code></td>
                                     <td><code>URL da logo branca</code></td>
-                                    <td>Logo para tema escuro</td>
+                                    <td>Logo do Netfin para tema escuro</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -1121,32 +1103,32 @@
                             <li>Clique em <strong>Add Script</strong></li>
                             <li>Cole o codigo abaixo (ou use o link do CDN)</li>
                             <li>Salve e atualize a pagina</li>
-                            <li>Um botao de tema aparecera no canto superior direito!</li>
+                            <li>A logo do Netfin sera aplicada automaticamente!</li>
                         </ol>
                         <div class="code-block" style="margin-top: 15px;">
-                            <code>https://cdn.jsdelivr.net/gh/TheusN/netfin@main/scripts%20JS/netfin-theme-switcher.js</code>
-                            <button class="copy-btn" onclick="copyCode('theme-switcher-cdn')">Copiar URL</button>
+                            <code>https://cdn.jsdelivr.net/gh/TheusN/netfin@main/scripts%20JS/netfin-custom-logo.js</code>
+                            <button class="copy-btn" onclick="copyCode('custom-logo-cdn')">Copiar URL</button>
                         </div>
                     </div>
 
-                    <button class="expand-btn" onclick="toggleCode('theme-switcher-code')">
+                    <button class="expand-btn" onclick="toggleCode('custom-logo-code')">
                         Ver Codigo Completo
                     </button>
 
-                    <div id="theme-switcher-code" class="collapsible-content">
+                    <div id="custom-logo-code" class="collapsible-content">
                         <div class="code-section">
                             <div class="code-header">
-                                <span>netfin-theme-switcher.js</span>
-                                <button class="copy-btn" onclick="copyCode('theme-switcher-full-code')">Copiar Codigo</button>
+                                <span>netfin-custom-logo.js</span>
+                                <button class="copy-btn" onclick="copyCode('custom-logo-full-code')">Copiar Codigo</button>
                             </div>
                             <div class="code-block">
-                                <pre><code id="theme-switcher-full-code">/**
- * Netfin - Theme Switcher & Custom Logo
- * Adiciona seletor de tema (Claro/Escuro/Sistema) e substitui logo do Jellyfin
+                                <pre><code id="custom-logo-full-code">/**
+ * Netfin - Custom Logo
+ * Substitui a logo do Jellyfin pela logo do Netfin (branca)
  * Para uso com Jellyfin JavaScript Injector
  *
  * Codigo completo disponivel em:
- * https://github.com/TheusN/netfin/blob/main/scripts%20JS/netfin-theme-switcher.js
+ * https://github.com/TheusN/netfin/blob/main/scripts%20JS/netfin-custom-logo.js
  */
 
 (function() {
@@ -1154,34 +1136,56 @@
 
     // CONFIGURACOES
     const CONFIG = {
-        enableThemeSwitcher: true,      // Seletor de tema
-        enableCustomLogo: true,         // Logo personalizada
-        logoLight: 'https://cdn.jsdelivr.net/gh/TheusN/netfin@main/temas/assets/img/logo-netfin-vermelha.png',
-        logoDark: 'https://cdn.jsdelivr.net/gh/TheusN/netfin@main/temas/assets/img/logo-netfin-branca.png',
-        storageKey: 'netfin-theme-preference'
+        logoUrl: 'https://cdn.jsdelivr.net/gh/TheusN/netfin@main/temas/assets/img/logo-netfin-branca.png'
     };
 
-    // GERENCIAMENTO DE TEMA
-    class ThemeManager {
-        constructor() {
-            this.currentTheme = this.getSavedTheme();
-            this.systemTheme = this.getSystemTheme();
-        }
+    // SUBSTITUICAO DE LOGO
+    function replaceJellyfinLogo() {
+        const logoSelectors = [
+            '.headerLogo',
+            '.pageTitleWithLogo',
+            'a[href="#!/home.html"] img',
+            '.imgLogoIcon',
+            'img[src*="web/assets/img/banner-light"]',
+            'img[src*="web/assets/img/icon"]'
+        ];
 
-        getSystemTheme() {
-            return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-        }
+        const replaceLogos = () => {
+            logoSelectors.forEach(selector => {
+                const logos = document.querySelectorAll(selector);
+                logos.forEach(logo => {
+                    if (logo && !logo.classList.contains('netfin-custom-logo')) {
+                        logo.classList.add('netfin-custom-logo');
+                        logo.src = CONFIG.logoUrl;
+                        logo.alt = 'Netfin';
+                        logo.style.height = 'auto';
+                        logo.style.maxHeight = '40px';
+                        logo.style.width = 'auto';
+                        logo.style.objectFit = 'contain';
+                    }
+                });
+            });
+        };
 
-        applyTheme(theme) {
-            this.currentTheme = theme;
-            const activeTheme = this.getActiveTheme();
-            document.body.classList.remove('netfin-light', 'netfin-dark');
-            document.body.classList.add(\`netfin-\${activeTheme}\`);
-            this.updateLogo(activeTheme);
-        }
+        replaceLogos();
+        setTimeout(replaceLogos, 1000);
+        setTimeout(replaceLogos, 2000);
+
+        const observer = new MutationObserver(replaceLogos);
+        observer.observe(document.body, { childList: true, subtree: true });
     }
 
-    // ... Codigo completo disponivel no GitHub ...
+    // INICIALIZACAO
+    function init() {
+        replaceJellyfinLogo();
+        console.log('Netfin Custom Logo carregado!');
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init);
+    } else {
+        init();
+    }
 })();
 </code></pre>
                             </div>
@@ -1190,24 +1194,20 @@
                         <div class="usage-tips">
                             <h3>Dicas de Uso</h3>
                             <ul>
-                                <li><strong>Modo Sistema:</strong> Detecta automaticamente se o dispositivo esta em modo claro ou escuro</li>
-                                <li><strong>Persistencia:</strong> A escolha do tema e salva no localStorage e mantida entre sessoes</li>
-                                <li><strong>Logo Adaptativa:</strong> A logo muda automaticamente de cor (vermelha no claro, branca no escuro)</li>
-                                <li><strong>API JavaScript:</strong> Acessivel via <code>window.NetfinTheme.setTheme('dark')</code></li>
-                                <li><strong>Compativel:</strong> Funciona perfeitamente com o tema CSS principal do Netfin</li>
+                                <li><strong>Automatico:</strong> Substitui a logo automaticamente sem necessidade de configuracao</li>
+                                <li><strong>Observer de DOM:</strong> Monitora mudancas no DOM para aplicar a logo em elementos dinamicos</li>
+                                <li><strong>Multiplas tentativas:</strong> Executa a substituicao em varios momentos para garantir sucesso</li>
+                                <li><strong>Simples:</strong> Apenas instale e pronto, nao precisa configurar nada</li>
                             </ul>
                         </div>
                     </div>
 
                     <div class="install-steps">
                         <h3 class="install-title">Customizacao</h3>
-                        <p>Para usar suas proprias logos, edite as URLs no objeto CONFIG:</p>
+                        <p>Para usar sua propria logo, edite a URL no objeto CONFIG:</p>
                         <div class="code-block" style="margin-top: 10px;">
                             <pre><code>const CONFIG = {
-    enableThemeSwitcher: true,
-    enableCustomLogo: true,
-    logoLight: 'https://seu-servidor.com/logo-clara.png',
-    logoDark: 'https://seu-servidor.com/logo-escura.png'
+    logoUrl: 'https://seu-servidor.com/sua-logo.png'
 };</code></pre>
                         </div>
                     </div>
